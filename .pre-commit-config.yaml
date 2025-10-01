@@ -1,0 +1,8 @@
+repos:
+  - repo: local
+    hooks:
+      - id: generate-resource-map
+        name: Generate Resource Map
+        entry: python docs/generate_resource_map.py
+        language: system
+        files: ^docs/

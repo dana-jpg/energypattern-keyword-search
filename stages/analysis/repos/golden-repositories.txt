@@ -1,0 +1,13 @@
+https://github.com/haddocking/haddock3
+https://github.com/qupath/qupath
+https://github.com/DedalusProject/dedalus
+https://github.com/DeepRank/deeprank2
+https://github.com/matchms/matchms
+https://github.com/GooglingTheCancerGenome/sv-callers
+https://github.com/amusecode/amuse
+https://github.com/SCM-NV/qmflows
+https://github.com/duqtools/duqtools
+https://github.com/ESMValGroup/ESMValTool
+https://github.com/multiscale/muscle3
+https://github.com/Workflomics/workflomics-benchmarker
+https://github.com/root-project/root

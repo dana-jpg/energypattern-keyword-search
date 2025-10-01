@@ -1,0 +1,321 @@
+<?xml version="1.0" ?>
+<matches>
+    <match src="=: = [1751,1752]" dest="=: = [1737,1738]"/>
+    <match src="parameters [1242,1273]" dest="parameters [1251,1282]"/>
+    <match src="identifier: metadata [1329,1337]" dest="identifier: metadata [1338,1346]"/>
+    <match src="identifier: temp_dir1 [554,563]" dest="identifier: temp_dir1 [554,563]"/>
+    <match src="comment:     # Create temporary directories for each tag [505,552]"
+           dest="comment:     # Create temporary directories for each tag [505,552]"/>
+    <match src="string [959,965]" dest="string [959,965]"/>
+    <match src="argument_list [2093,2095]" dest="argument_list [2079,2081]"/>
+    <match src="argument_list [1302,1321]" dest="argument_list [1311,1330]"/>
+    <match src="import_statement [11,22]" dest="import_statement [11,22]"/>
+    <match src="call [1190,1215]" dest="call [1199,1224]"/>
+    <match src="identifier: repo_name [1875,1884]" dest="identifier: repo_name [1861,1870]"/>
+    <match src="identifier: repo [427,431]" dest="identifier: repo [427,431]"/>
+    <match src="expression_statement [590,620]" dest="expression_statement [590,620]"/>
+    <match src="identifier: __name__ [2060,2068]" dest="identifier: __name__ [2046,2054]"/>
+    <match src="expression_statement [554,584]" dest="expression_statement [554,584]"/>
+    <match src="identifier: open [1910,1914]" dest="identifier: open [1896,1900]"/>
+    <match src="=: = [404,405]" dest="=: = [404,405]"/>
+    <match src="identifier: f [1945,1946]" dest="identifier: f [1931,1932]"/>
+    <match src="dictionary [1340,1510]" dest="dictionary [1349,1496]"/>
+    <match src="attribute [253,269]" dest="attribute [253,269]"/>
+    <match src="=: = [1799,1800]" dest="=: = [1785,1786]"/>
+    <match src="identifier: tempfile [566,574]" dest="identifier: tempfile [566,574]"/>
+    <match src="identifier: author [1867,1873]" dest="identifier: author [1853,1859]"/>
+    <match src="=: = [908,909]" dest="=: = [908,909]"/>
+    <match src="identifier: checkout [841,849]" dest="identifier: checkout [841,849]"/>
+    <match src="identifier: subprocess [31,41]" dest="identifier: subprocess [31,41]"/>
+    <match src="dotted_name [18,22]" dest="dotted_name [18,22]"/>
+    <match src="identifier: author [1744,1750]" dest="identifier: author [1730,1736]"/>
+    <match src="assignment [1794,1809]" dest="assignment [1780,1795]"/>
+    <match src="assignment [1018,1078]" dest="assignment [1018,1078]"/>
+    <match src="identifier: temp_dir2 [590,599]" dest="identifier: temp_dir2 [590,599]"/>
+    <match src="string [1822,1830]" dest="string [1808,1816]"/>
+    <match src="assignment [242,271]" dest="assignment [242,271]"/>
+    <match src="call [277,292]" dest="call [277,292]"/>
+    <match src="identifier: main [1529,1533]" dest="identifier: main [1515,1519]"/>
+    <match src="string [953,957]" dest="string [953,957]"/>
+    <match src="identifier: git [775,778]" dest="identifier: git [775,778]"/>
+    <match src="expression_statement [626,662]" dest="expression_statement [626,662]"/>
+    <match src="assignment [1768,1788]" dest="assignment [1754,1774]"/>
+    <match src="argument_list [1966,1989]" dest="argument_list [1952,1975]"/>
+    <match src="expression_statement [242,271]" dest="expression_statement [242,271]"/>
+    <match src="identifier: temp_dir2 [826,835]" dest="identifier: temp_dir2 [826,835]"/>
+    <match src="argument_list [410,421]" dest="argument_list [410,421]"/>
+    <match src="identifier: temp_dir1 [764,773]" dest="identifier: temp_dir1 [764,773]"/>
+    <match src="identifier: metadata [1511,1519]" dest="identifier: metadata [1497,1505]"/>
+    <match src="attribute [1027,1041]" dest="attribute [1027,1041]"/>
+    <match src="dotted_name [87,93]" dest="dotted_name [87,93]"/>
+    <match src="identifier: repo_name [1251,1260]" dest="identifier: repo_name [1260,1269]"/>
+    <match src="identifier: tag1 [1886,1890]" dest="identifier: tag1 [1872,1876]"/>
+    <match src="attribute [799,840]" dest="attribute [799,840]"/>
+    <match src="keyword_argument [1980,1988]" dest="keyword_argument [1966,1974]"/>
+    <match src="call [1027,1078]" dest="call [1027,1078]"/>
+    <match src="identifier: print [626,631]" dest="identifier: print [626,631]"/>
+    <match src="identifier: author [1243,1249]" dest="identifier: author [1252,1258]"/>
+    <match src="expression_statement [399,421]" dest="expression_statement [399,421]"/>
+    <match src="keyword_argument [1047,1066]" dest="keyword_argument [1047,1066]"/>
+    <match src="=: = [564,565]" dest="=: = [564,565]"/>
+    <match src="identifier: tag1 [1478,1482]" dest="identifier: tag1 [1464,1468]"/>
+    <match src="identifier: run_gumtree_diff [459,475]" dest="identifier: run_gumtree_diff [459,475]"/>
+    <match src="import_statement [0,9]" dest="import_statement [0,9]"/>
+    <match src="identifier: author [154,160]" dest="identifier: author [154,160]"/>
+    <match src="module [0,2086]" dest="module [0,2072]"/>
+    <match src="=: = [188,189]" dest="=: = [188,189]"/>
+    <match src="argument_list [814,836]" dest="argument_list [814,836]"/>
+    <match src="true: True [1062,1066]" dest="true: True [1062,1066]"/>
+    <match src="expression_statement [1768,1788]" dest="expression_statement [1754,1774]"/>
+    <match src="identifier: text [1068,1072]" dest="identifier: text [1068,1072]"/>
+    <match src="argument_list [1914,1941]" dest="argument_list [1900,1927]"/>
+    <match src="parameters [376,392]" dest="parameters [376,392]"/>
+    <match src="=: = [251,252]" dest="=: = [251,252]"/>
+    <match src="argument_list [1200,1215]" dest="argument_list [1209,1224]"/>
+    <match src="argument_list [1466,1489]" dest="argument_list [1452,1475]"/>
+    <match src="identifier: Repo [406,410]" dest="identifier: Repo [406,410]"/>
+    <match src="identifier: repo_path [753,762]" dest="identifier: repo_path [753,762]"/>
+    <match src="call [1292,1321]" dest="call [1301,1330]"/>
+    <match src="expression_statement [298,333]" dest="expression_statement [298,333]"/>
+    <match src="expression_statement [1957,1989]" dest="expression_statement [1943,1975]"/>
+    <match src="string [1915,1935]" dest="string [1901,1921]"/>
+    <match src="identifier: tag1 [788,792]" dest="identifier: tag1 [788,792]"/>
+    <match src="=: = [600,601]" dest="=: = [600,601]"/>
+    <match src="identifier: indent [1980,1986]" dest="identifier: indent [1966,1972]"/>
+    <match src="function_definition [360,416]" dest="function_definition [360,416]"/>
+    <match src="expression_statement [179,236]" dest="expression_statement [179,236]"/>
+    <match src="pair [1393,1405]" dest="pair [1402,1414]"/>
+    <match src="assignment [1329,1488]" dest="assignment [1338,1474]"/>
+    <match src="expression_statement [1838,1897]" dest="expression_statement [1824,1883]"/>
+    <match src="identifier: Repo [799,803]" dest="identifier: Repo [799,803]"/>
+    <match src="identifier: GIT_SORT_TOPOLOGICAL [113,133]" dest="identifier: GIT_SORT_TOPOLOGICAL [113,133]"/>
+    <match src="=: = [1820,1821]" dest="=: = [1806,1807]"/>
+    <match src="expression_statement [1329,1488]" dest="expression_statement [1338,1474]"/>
+    <match src="argument_list [787,793]" dest="argument_list [787,793]"/>
+    <match src="call [737,774]" dest="call [737,774]"/>
+    <match src="identifier: generate_metadata [1849,1866]" dest="identifier: generate_metadata [1835,1852]"/>
+    <match src="attribute [737,752]" dest="attribute [737,752]"/>
+    <match src="identifier: Repo [298,302]" dest="identifier: Repo [298,302]"/>
+    <match src="argument_list [1041,1078]" dest="argument_list [1041,1078]"/>
+    <match src="identifier: tempfile [253,261]" dest="identifier: tempfile [253,261]"/>
+    <match src="from: from [82,86]" dest="from: from [82,86]"/>
+    <match src="assignment [1744,1762]" dest="assignment [1730,1748]"/>
+    <match src="string [932,942]" dest="string [932,942]"/>
+    <match src="block [399,431]" dest="block [399,431]"/>
+    <match src="string [1937,1940]" dest="string [1923,1926]"/>
+    <match src="pair [1439,1489]" dest="pair [1425,1475]"/>
+    <match src="identifier: clone_repo [143,153]" dest="identifier: clone_repo [143,153]"/>
+    <match src="identifier: pygit2 [87,93]" dest="identifier: pygit2 [87,93]"/>
+    <match src="dotted_name [113,133]" dest="dotted_name [113,133]"/>
+    <match src="expression_statement [1744,1762]" dest="expression_statement [1730,1748]"/>
+    <match src="call [1910,1941]" dest="call [1896,1927]"/>
+    <match src="parameters [153,172]" dest="parameters [153,172]"/>
+    <match src="call [566,584]" dest="call [566,584]"/>
+    <match src="comment:     # tag1 = input(&quot;Enter first tag: &quot;) [1659,1698]"
+           dest="comment:     # tag1 = input(&quot;Enter first tag: &quot;) [1645,1684]"/>
+    <match src="string [1753,1762]" dest="string [1739,1748]"/>
+    <match src="call [626,662]" dest="call [626,662]"/>
+    <match src="list [910,1021]" dest="list [910,1021]"/>
+    <match src="call [298,333]" dest="call [298,333]"/>
+    <match src="identifier: repo_url [179,187]" dest="identifier: repo_url [179,187]"/>
+    <match src="identifier: repo_path [476,485]" dest="identifier: repo_path [476,485]"/>
+    <match src="dotted_name [65,68]" dest="dotted_name [65,68]"/>
+    <match src="identifier: repo_name [1311,1320]" dest="identifier: repo_name [1320,1329]"/>
+    <match src="identifier: repo_url [314,322]" dest="identifier: repo_url [314,322]"/>
+    <match src="string [2003,2050]" dest="string [1989,2036]"/>
+    <match src="identifier: tag2 [1268,1272]" dest="identifier: tag2 [1277,1281]"/>
+    <match src="block [1744,2037]" dest="block [1730,2023]"/>
+    <match src="argument_list [618,620]" dest="argument_list [618,620]"/>
+    <match src="import_statement [24,41]" dest="import_statement [24,41]"/>
+    <match src="identifier: repo_name [1768,1777]" dest="identifier: repo_name [1754,1763]"/>
+    <match src="identifier: f [1977,1978]" dest="identifier: f [1963,1964]"/>
+    <match src="expression_statement [427,449]" dest="expression_statement [427,449]"/>
+    <match src="identifier: tempfile [602,610]" dest="identifier: tempfile [602,610]"/>
+    <match src="identifier: mkdtemp [262,269]" dest="identifier: mkdtemp [262,269]"/>
+    <match src="identifier: subprocess [1027,1037]" dest="identifier: subprocess [1027,1037]"/>
+    <match src="argument_list [313,333]" dest="argument_list [313,333]"/>
+    <match src="identifier: tag [388,391]" dest="identifier: tag [388,391]"/>
+    <match src="with_clause [1910,1946]" dest="with_clause [1896,1932]"/>
+    <match src="identifier: tag1 [487,491]" dest="identifier: tag1 [487,491]"/>
+    <match src="expression_statement [1794,1809]" dest="expression_statement [1780,1795]"/>
+    <match src="identifier: temp_dir [324,332]" dest="identifier: temp_dir [324,332]"/>
+    <match src="=: = [1986,1987]" dest="=: = [1972,1973]"/>
+    <match src="attribute [602,618]" dest="attribute [602,618]"/>
+    <match src="parameters [1533,1535]" dest="parameters [1519,1521]"/>
+    <match src="call [602,620]" dest="call [602,620]"/>
+    <match src="keyword_argument [1068,1077]" dest="keyword_argument [1068,1077]"/>
+    <match src="identifier: cmd [1042,1045]" dest="identifier: cmd [1042,1045]"/>
+    <match src="string [2072,2082]" dest="string [2058,2068]"/>
+    <match src="return_statement [1504,1519]" dest="return_statement [1490,1505]"/>
+    <match src="function_definition [1221,1466]" dest="function_definition [1230,1452]"/>
+    <match src="string [921,930]" dest="string [921,930]"/>
+    <match src="return_statement [1183,1215]" dest="return_statement [1192,1224]"/>
+    <match src="call [406,421]" dest="call [406,421]"/>
+    <match src="assignment [590,620]" dest="assignment [590,620]"/>
+    <match src="call [1450,1489]" dest="call [1436,1475]"/>
+    <match src="attribute [1957,1966]" dest="attribute [1943,1952]"/>
+    <match src="integer: 2 [1987,1988]" dest="integer: 2 [1973,1974]"/>
+    <match src="call [253,271]" dest="call [253,271]"/>
+    <match src="comment:     # repo_name = input(&quot;Enter GitHub repository name: &quot;) [1600,1657]"
+           dest="comment:     # repo_name = input(&quot;Enter GitHub repository name: &quot;) [1586,1643]"/>
+    <match src="identifier: Repo [737,741]" dest="identifier: Repo [737,741]"/>
+    <match src="import_statement [43,58]" dest="import_statement [43,58]"/>
+    <match src="expression_statement [904,1009]" dest="expression_statement [904,1009]"/>
+    <match src="with_item [1910,1946]" dest="with_item [1896,1932]"/>
+    <match src="identifier: repo_name [162,171]" dest="identifier: repo_name [162,171]"/>
+    <match src="identifier: clone_repo [1292,1302]" dest="identifier: clone_repo [1301,1311]"/>
+    <match src="identifier: tag1 [1401,1405]" dest="identifier: tag1 [1410,1414]"/>
+    <match src="=: = [1290,1291]" dest="=: = [1299,1300]"/>
+    <match src="attribute [427,444]" dest="attribute [427,444]"/>
+    <match src="identifier: result [1018,1024]" dest="identifier: result [1018,1024]"/>
+    <match src="argument_list [269,271]" dest="argument_list [269,271]"/>
+    <match src="identifier: clone_from [303,313]" dest="identifier: clone_from [303,313]"/>
+    <match src="identifier: temp_dir [283,291]" dest="identifier: temp_dir [283,291]"/>
+    <match src="call [799,855]" dest="call [799,855]"/>
+    <match src="expression_statement [1815,1830]" dest="expression_statement [1801,1816]"/>
+    <match src="call [737,793]" dest="call [737,793]"/>
+    <match src="assignment [399,421]" dest="assignment [399,421]"/>
+    <match src="identifier: mkdtemp [611,618]" dest="identifier: mkdtemp [611,618]"/>
+    <match src="function_definition [139,320]" dest="function_definition [139,320]"/>
+    <match src="identifier: result [1201,1207]" dest="identifier: result [1210,1216]"/>
+    <match src="string [632,661]" dest="string [632,661]"/>
+    <match src="argument_list [631,662]" dest="argument_list [631,662]"/>
+    <match src="identifier: repo_path [411,420]" dest="identifier: repo_path [411,420]"/>
+    <match src="attribute [1201,1214]" dest="attribute [1210,1223]"/>
+    <match src="comment:     # Clean up temporary directories [1086,1122]" dest="comment:     # [1084,1089]"/>
+    <match src="identifier: repo_path [815,824]" dest="identifier: repo_path [815,824]"/>
+    <match src="=: = [1778,1779]" dest="=: = [1764,1765]"/>
+    <match src="identifier: checkout [779,787]" dest="identifier: checkout [779,787]"/>
+    <match src="comparison_operator: == [2069,2071]" dest="comparison_operator: == [2055,2057]"/>
+    <match src="assignment [1838,1897]" dest="assignment [1824,1883]"/>
+    <match src="identifier: repo_path [377,386]" dest="identifier: repo_path [377,386]"/>
+    <match src="identifier: temp_dir [242,250]" dest="identifier: temp_dir [242,250]"/>
+    <match src="identifier: tag2 [1484,1488]" dest="identifier: tag2 [1470,1474]"/>
+    <match src="identifier: tag2 [493,497]" dest="identifier: tag2 [493,497]"/>
+    <match src="argument_list [1866,1897]" dest="argument_list [1852,1883]"/>
+    <match src="identifier: git [65,68]" dest="identifier: git [65,68]"/>
+    <match src="comment:     # tag2 = input(&quot;Enter second tag: &quot;) [1700,1740]"
+           dest="comment:     # tag2 = input(&quot;Enter second tag: &quot;) [1686,1726]"/>
+    <match src="=: = [1025,1026]" dest="=: = [1025,1026]"/>
+    <match src="expression_statement [799,855]" dest="expression_statement [799,855]"/>
+    <match src="identifier: run [1038,1041]" dest="identifier: run [1038,1041]"/>
+    <match src="identifier: repo [399,403]" dest="identifier: repo [399,403]"/>
+    <match src="identifier: tag [445,448]" dest="identifier: tag [445,448]"/>
+    <match src="as_pattern_target [1945,1946]" dest="as_pattern_target [1931,1932]"/>
+    <match src="string [1439,1448]" dest="string [1425,1434]"/>
+    <match src="comment:     # Run GumTree on the entire project [863,902]"
+           dest="comment:     # Run GumTree on the entire project [863,902]"/>
+    <match src="expression_statement [1018,1078]" dest="expression_statement [1018,1078]"/>
+    <match src="identifier: os [7,9]" dest="identifier: os [7,9]"/>
+    <match src="dotted_name [7,9]" dest="dotted_name [7,9]"/>
+    <match src="assignment [904,1009]" dest="assignment [904,1009]"/>
+    <match src="identifier: run_gumtree_diff [1450,1466]" dest="identifier: run_gumtree_diff [1436,1452]"/>
+    <match src="assignment [1280,1321]" dest="assignment [1289,1330]"/>
+    <match src="identifier: temp_dir1 [976,985]" dest="identifier: temp_dir1 [976,985]"/>
+    <match src="=: = [1338,1339]" dest="=: = [1347,1348]"/>
+    <match src="argument_list [282,292]" dest="argument_list [282,292]"/>
+    <match src="attribute [737,787]" dest="attribute [737,787]"/>
+    <match src="identifier: main [2089,2093]" dest="identifier: main [2075,2079]"/>
+    <match src="identifier: loads [1195,1200]" dest="identifier: loads [1204,1209]"/>
+    <match src="call [1957,1989]" dest="call [1943,1975]"/>
+    <match src="pair [1351,1382]" dest="pair [1360,1391]"/>
+    <match src="string [1801,1809]" dest="string [1787,1795]"/>
+    <match src="block [179,301]" dest="block [179,301]"/>
+    <match src="comment:     # Clone the repository twice and checkout the respective tags [670,735]"
+           dest="comment:     # Clone the repository twice and checkout the respective tags [670,735]"/>
+    <match src="argument_list [582,584]" dest="argument_list [582,584]"/>
+    <match src="comment:     # author = input(&quot;Enter GitHub repository author: &quot;) [1542,1598]"
+           dest="comment:     # author = input(&quot;Enter GitHub repository author: &quot;) [1528,1584]"/>
+    <match src="argument_list [752,774]" dest="argument_list [752,774]"/>
+    <match src="identifier: print [1997,2002]" dest="identifier: print [1983,1988]"/>
+    <match src="expression_statement [1280,1321]" dest="expression_statement [1289,1330]"/>
+    <match src="identifier: stdout [1208,1214]" dest="identifier: stdout [1217,1223]"/>
+    <match src="dotted_name [76,80]" dest="dotted_name [76,80]"/>
+    <match src="identifier: json [18,22]" dest="identifier: json [18,22]"/>
+    <match src="identifier: checkout_tag [364,376]" dest="identifier: checkout_tag [364,376]"/>
+    <match src="attribute [566,582]" dest="attribute [566,582]"/>
+    <match src="identifier: git [432,435]" dest="identifier: git [432,435]"/>
+    <match src="parameters [475,498]" dest="parameters [475,498]"/>
+    <match src="string [1780,1788]" dest="string [1766,1774]"/>
+    <match src="block [1280,1482]" dest="block [1289,1468]"/>
+    <match src="call [427,449]" dest="call [427,449]"/>
+    <match src="call [2089,2095]" dest="call [2075,2081]"/>
+    <match src="expression_statement [2089,2095]" dest="expression_statement [2075,2081]"/>
+    <match src="call [1849,1897]" dest="call [1835,1883]"/>
+    <match src="function_definition [455,1171]" dest="function_definition [455,1180]"/>
+    <match src="identifier: capture_output [1047,1061]" dest="identifier: capture_output [1047,1061]"/>
+    <match src="assignment [554,584]" dest="assignment [554,584]"/>
+    <match src="identifier: temp_dir [346,354]" dest="identifier: temp_dir [346,354]"/>
+    <match src="from: from [60,64]" dest="from: from [60,64]"/>
+    <match src="identifier: tag1 [1262,1266]" dest="identifier: tag1 [1271,1275]"/>
+    <match src="expression_statement [1997,2051]" dest="expression_statement [1983,2037]"/>
+    <match src="=: = [1072,1073]" dest="=: = [1072,1073]"/>
+    <match src="block [2089,2095]" dest="block [2075,2081]"/>
+    <match src="identifier: tag2 [1892,1896]" dest="identifier: tag2 [1878,1882]"/>
+    <match src="identifier: print [277,282]" dest="identifier: print [277,282]"/>
+    <match src="block [554,1189]" dest="block [554,1198]"/>
+    <match src="identifier: repo_path [1280,1289]" dest="identifier: repo_path [1289,1298]"/>
+    <match src="import_from_statement [82,133]" dest="import_from_statement [82,133]"/>
+    <match src="as_pattern [1910,1946]" dest="as_pattern [1896,1932]"/>
+    <match src="argument_list [444,449]" dest="argument_list [444,449]"/>
+    <match src="function_definition [1525,2040]" dest="function_definition [1511,2026]"/>
+    <match src="identifier: temp_dir2 [996,1005]" dest="identifier: temp_dir2 [996,1005]"/>
+    <match src="expression_statement [277,292]" dest="expression_statement [277,292]"/>
+    <match src="argument_list [849,855]" dest="argument_list [849,855]"/>
+    <match src="=: = [1061,1062]" dest="=: = [1061,1062]"/>
+    <match src="identifier: tag1 [1794,1798]" dest="identifier: tag1 [1780,1784]"/>
+    <match src="identifier: json [1957,1961]" dest="identifier: json [1943,1947]"/>
+    <match src="string [1351,1357]" dest="string [1360,1366]"/>
+    <match src="block [1957,1989]" dest="block [1943,1975]"/>
+    <match src="identifier: generate_metadata [1225,1242]" dest="identifier: generate_metadata [1234,1251]"/>
+    <match src="assignment [1815,1830]" dest="assignment [1801,1816]"/>
+    <match src="comparison_operator [2060,2082]" dest="comparison_operator [2046,2068]"/>
+    <match src="identifier: author [1303,1309]" dest="identifier: author [1312,1318]"/>
+    <match src="with_statement [1905,1951]" dest="with_statement [1891,1937]"/>
+    <match src="identifier: tempfile [50,58]" dest="identifier: tempfile [50,58]"/>
+    <match src="attribute [298,313]" dest="attribute [298,313]"/>
+    <match src="=: = [1847,1848]" dest="=: = [1833,1834]"/>
+    <match src="call [799,836]" dest="call [799,836]"/>
+    <match src="return_statement [339,354]" dest="return_statement [339,354]"/>
+    <match src="dotted_name [50,58]" dest="dotted_name [50,58]"/>
+    <match src="argument_list [2002,2051]" dest="argument_list [1988,2037]"/>
+    <match src="string [1393,1399]" dest="string [1402,1408]"/>
+    <match src="attribute [799,849]" dest="attribute [799,849]"/>
+    <match src="identifier: dump [1962,1966]" dest="identifier: dump [1948,1952]"/>
+    <match src="call [1997,2051]" dest="call [1983,2037]"/>
+    <match src="identifier: clone_from [804,814]" dest="identifier: clone_from [804,814]"/>
+    <match src="true: True [1073,1077]" dest="true: True [1073,1077]"/>
+    <match src="identifier: checkout [436,444]" dest="identifier: checkout [436,444]"/>
+    <match src="import_from_statement [60,80]" dest="import_from_statement [60,80]"/>
+    <match src="attribute [799,814]" dest="attribute [799,814]"/>
+    <match src="identifier: metadata [1838,1846]" dest="identifier: metadata [1824,1832]"/>
+    <match src="string [190,236]" dest="string [190,236]"/>
+    <match src="identifier: repo_path [1467,1476]" dest="identifier: repo_path [1453,1462]"/>
+    <match src="string [1359,1382]" dest="string [1368,1391]"/>
+    <match src="identifier: tag2 [850,854]" dest="identifier: tag2 [850,854]"/>
+    <match src="identifier: cmd [904,907]" dest="identifier: cmd [904,907]"/>
+    <match src="expression_statement [737,793]" dest="expression_statement [737,793]"/>
+    <match src="if_statement [2057,2069]" dest="if_statement [2043,2055]"/>
+    <match src="identifier: Repository [101,111]" dest="identifier: Repository [101,111]"/>
+    <match src="assignment [179,236]" dest="assignment [179,236]"/>
+    <match src="identifier: git [837,840]" dest="identifier: git [837,840]"/>
+    <match src="attribute [737,778]" dest="attribute [737,778]"/>
+    <match src="identifier: Repo [76,80]" dest="identifier: Repo [76,80]"/>
+    <match src="identifier: tag2 [1815,1819]" dest="identifier: tag2 [1801,1805]"/>
+    <match src="identifier: json [1190,1194]" dest="identifier: json [1199,1203]"/>
+    <match src="identifier: metadata [1967,1975]" dest="identifier: metadata [1953,1961]"/>
+    <match src="identifier: mkdtemp [575,582]" dest="identifier: mkdtemp [575,582]"/>
+    <match src="attribute [1190,1200]" dest="attribute [1199,1209]"/>
+    <match src="attribute [427,435]" dest="attribute [427,435]"/>
+    <match src="identifier: clone_from [742,752]" dest="identifier: clone_from [742,752]"/>
+    <match src="dotted_name [101,111]" dest="dotted_name [101,111]"/>
+    <match src="dotted_name [31,41]" dest="dotted_name [31,41]"/>
+</matches>
+<actions>
+<update-node tree="comment:     # Clean up temporary directories [1086,1122]" label="    #"/>
+<insert-node tree="comment:     # # Clean up temporary directories [1091,1129]" parent="block [554,1198]" at="10"/>
+<insert-node tree="comment:     # subprocess.run([&quot;rm&quot;, &quot;-rf&quot;, temp_dir1, temp_dir2]) [1131,1188]"
+             parent="block [554,1198]" at="11"/>
+<delete-tree tree="expression_statement [1124,1175]"/>
+<delete-tree tree="pair [1416,1428]"/>
+</actions>

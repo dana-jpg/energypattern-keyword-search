@@ -1,0 +1,37 @@
+filename,ext,element_type,class.name,method.name,method.parameters,class.field,class.instance_field,embedding,field.name,field.default,method.type,method.decorator,class.base,function.name,function.parameters,function.type,function.docstring,type,type.name,type.value,constant,constant.name,constant.value,import,import.name,import.from,import.path
+test_file.py,python,class_field,BaseReader,__init__,"(self, book: Book)",self.book = book,self.book = book,Class field: [instance] BaseReader.book = book,,,,,,,,,,,,,,,,,,,
+test_file.py,python,class_field,WordReader,,,instances = 0,,Class field: WordReader.instances = 0,instances,0,,,,,,,,,,,,,,,,,
+test_file.py,python,class_field,WordReader,,,new_books: List[Book],,Class field: WordReader.new_books: List[Book],new_books,,,,,,,,,,,,,,,,,,
+test_file.py,python,class_method,BaseReader,__init__,"(self, book: Book)",,,"Class method: BaseReader.__init__(self, book: Book)",,,,,,,,,,,,,,,,,,,
+test_file.py,python,class_method,BaseReader,read,"(self, page: int)",,,"Class method: BaseReader.read(self, page: int) -> int",,,int,,,,,,,,,,,,,,,,
+test_file.py,python,class_method,BaseReader,create_class,(cls),,,Class method: [classmethod] BaseReader.create_class(cls),,,,classmethod,,,,,,,,,,,,,,,
+test_file.py,python,class_method,BaseReader,read_all_words,(cls),,,Class method: [staticmethod] BaseReader.read_all_words(cls),,,,staticmethod,,,,,,,,,,,,,,,
+test_file.py,python,class_method,BaseReader,read_all,(self),,,Class method: BaseReader.read_all(self),,,,,,,,,,,,,,,,,,,
+test_file.py,python,class_method,WordReader,read,"(self, page: int)",,,"Class method: WordReader.read(self, page: int)",,,,,,,,,,,,,,,,,,,
+test_file.py,python,class_method,WordReader,read_all,(self),,,Class method: WordReader.read_all(self),,,,,,,,,,,,,,,,,,,
+test_file.py,python,class_method,WordReader,read_all_words,(self),,,Class method: WordReader.read_all_words(self),,,,,,,,,,,,,,,,,,,
+test_file.py,python,class_method,Writer,write,"(self, word: str)",,,"Class method: Writer.write(self, word: str)",,,,,,,,,,,,,,,,,,,
+test_file.py,python,class_method,Manager,test,(self),,,Class method: Manager.test(self),,,,,,,,,,,,,,,,,,,
+test_file.py,python,class,BaseReader,,,,,Class: BaseReader,,,,,,,,,,,,,,,,,,,
+test_file.py,python,class,WordReader,,,,,Class: WordReader(BaseReader),,,,,(BaseReader),,,,,,,,,,,,,,
+test_file.py,python,class,Writer,,,,,Class: Writer(),,,,,(),,,,,,,,,,,,,,
+test_file.py,python,class,Manager,,,,,"Class: Manager(BaseReader, Writer)",,,,,"(BaseReader, Writer)",,,,,,,,,,,,,,
+test_file.py,python,function,,,,,,"Function: read(
+        filename: str,
+)",,,,,,read,"(
+        filename: str,
+)",,,,,,,,,,,,
+test_file.py,python,function,,,,,,"Function: run_gumtree_diff(author: str, repo_name, repo_path, tag1, tag2) -> dict",,,,,,run_gumtree_diff,"(author: str, repo_name, repo_path, tag1, tag2)",dict,"# Clone the repository twice and checkout the respective tags",,,,,,,,,,
+test_file.py,python,function,,,,,,"Function: generate_metadata(author, repo_name, tag1, tag2)",,,,,,generate_metadata,"(author, repo_name, tag1, tag2)",,,,,,,,,,,,
+test_file.py,python,function,,,,,,Function: main(),,,,,,main,(),,,,,,,,,,,,
+test_file.py,python,module_type,,,,,,Type: Book = List[int],,,,,,,,,,type Book = List[int],Book,List[int],,,,,,,
+test_file.py,python,constant,,,,,,Constant: any_book = 1,,,,,,,,,,,,,any_book = 1,any_book,1,,,,
+test_file.py,python,constant,,,,,,"Constant: MY_FAVORITE_BOOK = ""Garfield""",,,,,,,,,,,,,"MY_FAVORITE_BOOK = ""Garfield""",MY_FAVORITE_BOOK,"""Garfield""",,,,
+test_file.py,python,constant,,,,,,"Constant: WORDS = ""1,2,31,4124,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20"".split("","")",,,,,,,,,,,,,"WORDS = ""1,2,31,4124,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20"".split("","")",WORDS,"""1,2,31,4124,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20"".split("","")",,,,
+test_file.py,python,import,,,,,,Import: json,,,,,,,,,,,,,,,,import json,json,,
+test_file.py,python,import,,,,,,Import: os,,,,,,,,,,,,,,,,import os,os,,
+test_file.py,python,import,,,,,,Import: subprocess,,,,,,,,,,,,,,,,import subprocess,subprocess,,
+test_file.py,python,import,,,,,,Import: List from typing,,,,,,,,,,,,,,,,from typing import List,List,typing,
+test_file.py,python,local_import,,,,,,Import: clone_repo from services.git,,,,,,,,,,,,,,,,"from services.git import clone_repo, clone_tag, get_abs_parent_dir",clone_repo,services.git,services.git
+test_file.py,python,local_import,,,,,,Import: clone_tag from services.git,,,,,,,,,,,,,,,,"from services.git import clone_repo, clone_tag, get_abs_parent_dir",clone_tag,services.git,services.git
+test_file.py,python,local_import,,,,,,Import: get_abs_parent_dir from services.git,,,,,,,,,,,,,,,,"from services.git import clone_repo, clone_tag, get_abs_parent_dir",get_abs_parent_dir,services.git,services.git

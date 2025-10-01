@@ -1,0 +1,1243 @@
+{
+  "matches": [
+    {
+      "src": "=: = [1751,1752]",
+      "dest": "=: = [1737,1738]"
+    },
+    {
+      "src": "parameters [1242,1273]",
+      "dest": "parameters [1251,1282]"
+    },
+    {
+      "src": "identifier: metadata [1329,1337]",
+      "dest": "identifier: metadata [1338,1346]"
+    },
+    {
+      "src": "identifier: temp_dir1 [554,563]",
+      "dest": "identifier: temp_dir1 [554,563]"
+    },
+    {
+      "src": "comment:     # Create temporary directories for each tag [505,552]",
+      "dest": "comment:     # Create temporary directories for each tag [505,552]"
+    },
+    {
+      "src": "string [959,965]",
+      "dest": "string [959,965]"
+    },
+    {
+      "src": "argument_list [2093,2095]",
+      "dest": "argument_list [2079,2081]"
+    },
+    {
+      "src": "argument_list [1302,1321]",
+      "dest": "argument_list [1311,1330]"
+    },
+    {
+      "src": "import_statement [11,22]",
+      "dest": "import_statement [11,22]"
+    },
+    {
+      "src": "call [1190,1215]",
+      "dest": "call [1199,1224]"
+    },
+    {
+      "src": "identifier: repo_name [1875,1884]",
+      "dest": "identifier: repo_name [1861,1870]"
+    },
+    {
+      "src": "identifier: repo [427,431]",
+      "dest": "identifier: repo [427,431]"
+    },
+    {
+      "src": "expression_statement [590,620]",
+      "dest": "expression_statement [590,620]"
+    },
+    {
+      "src": "identifier: __name__ [2060,2068]",
+      "dest": "identifier: __name__ [2046,2054]"
+    },
+    {
+      "src": "expression_statement [554,584]",
+      "dest": "expression_statement [554,584]"
+    },
+    {
+      "src": "identifier: open [1910,1914]",
+      "dest": "identifier: open [1896,1900]"
+    },
+    {
+      "src": "=: = [404,405]",
+      "dest": "=: = [404,405]"
+    },
+    {
+      "src": "identifier: f [1945,1946]",
+      "dest": "identifier: f [1931,1932]"
+    },
+    {
+      "src": "dictionary [1340,1510]",
+      "dest": "dictionary [1349,1496]"
+    },
+    {
+      "src": "attribute [253,269]",
+      "dest": "attribute [253,269]"
+    },
+    {
+      "src": "=: = [1799,1800]",
+      "dest": "=: = [1785,1786]"
+    },
+    {
+      "src": "identifier: tempfile [566,574]",
+      "dest": "identifier: tempfile [566,574]"
+    },
+    {
+      "src": "identifier: author [1867,1873]",
+      "dest": "identifier: author [1853,1859]"
+    },
+    {
+      "src": "=: = [908,909]",
+      "dest": "=: = [908,909]"
+    },
+    {
+      "src": "identifier: checkout [841,849]",
+      "dest": "identifier: checkout [841,849]"
+    },
+    {
+      "src": "identifier: subprocess [31,41]",
+      "dest": "identifier: subprocess [31,41]"
+    },
+    {
+      "src": "dotted_name [18,22]",
+      "dest": "dotted_name [18,22]"
+    },
+    {
+      "src": "identifier: author [1744,1750]",
+      "dest": "identifier: author [1730,1736]"
+    },
+    {
+      "src": "assignment [1794,1809]",
+      "dest": "assignment [1780,1795]"
+    },
+    {
+      "src": "assignment [1018,1078]",
+      "dest": "assignment [1018,1078]"
+    },
+    {
+      "src": "identifier: temp_dir2 [590,599]",
+      "dest": "identifier: temp_dir2 [590,599]"
+    },
+    {
+      "src": "string [1822,1830]",
+      "dest": "string [1808,1816]"
+    },
+    {
+      "src": "assignment [242,271]",
+      "dest": "assignment [242,271]"
+    },
+    {
+      "src": "call [277,292]",
+      "dest": "call [277,292]"
+    },
+    {
+      "src": "identifier: main [1529,1533]",
+      "dest": "identifier: main [1515,1519]"
+    },
+    {
+      "src": "string [953,957]",
+      "dest": "string [953,957]"
+    },
+    {
+      "src": "identifier: git [775,778]",
+      "dest": "identifier: git [775,778]"
+    },
+    {
+      "src": "expression_statement [626,662]",
+      "dest": "expression_statement [626,662]"
+    },
+    {
+      "src": "assignment [1768,1788]",
+      "dest": "assignment [1754,1774]"
+    },
+    {
+      "src": "argument_list [1966,1989]",
+      "dest": "argument_list [1952,1975]"
+    },
+    {
+      "src": "expression_statement [242,271]",
+      "dest": "expression_statement [242,271]"
+    },
+    {
+      "src": "identifier: temp_dir2 [826,835]",
+      "dest": "identifier: temp_dir2 [826,835]"
+    },
+    {
+      "src": "argument_list [410,421]",
+      "dest": "argument_list [410,421]"
+    },
+    {
+      "src": "identifier: temp_dir1 [764,773]",
+      "dest": "identifier: temp_dir1 [764,773]"
+    },
+    {
+      "src": "identifier: metadata [1511,1519]",
+      "dest": "identifier: metadata [1497,1505]"
+    },
+    {
+      "src": "attribute [1027,1041]",
+      "dest": "attribute [1027,1041]"
+    },
+    {
+      "src": "dotted_name [87,93]",
+      "dest": "dotted_name [87,93]"
+    },
+    {
+      "src": "identifier: repo_name [1251,1260]",
+      "dest": "identifier: repo_name [1260,1269]"
+    },
+    {
+      "src": "identifier: tag1 [1886,1890]",
+      "dest": "identifier: tag1 [1872,1876]"
+    },
+    {
+      "src": "attribute [799,840]",
+      "dest": "attribute [799,840]"
+    },
+    {
+      "src": "keyword_argument [1980,1988]",
+      "dest": "keyword_argument [1966,1974]"
+    },
+    {
+      "src": "call [1027,1078]",
+      "dest": "call [1027,1078]"
+    },
+    {
+      "src": "identifier: print [626,631]",
+      "dest": "identifier: print [626,631]"
+    },
+    {
+      "src": "identifier: author [1243,1249]",
+      "dest": "identifier: author [1252,1258]"
+    },
+    {
+      "src": "expression_statement [399,421]",
+      "dest": "expression_statement [399,421]"
+    },
+    {
+      "src": "keyword_argument [1047,1066]",
+      "dest": "keyword_argument [1047,1066]"
+    },
+    {
+      "src": "=: = [564,565]",
+      "dest": "=: = [564,565]"
+    },
+    {
+      "src": "identifier: tag1 [1478,1482]",
+      "dest": "identifier: tag1 [1464,1468]"
+    },
+    {
+      "src": "identifier: run_gumtree_diff [459,475]",
+      "dest": "identifier: run_gumtree_diff [459,475]"
+    },
+    {
+      "src": "import_statement [0,9]",
+      "dest": "import_statement [0,9]"
+    },
+    {
+      "src": "identifier: author [154,160]",
+      "dest": "identifier: author [154,160]"
+    },
+    {
+      "src": "module [0,2086]",
+      "dest": "module [0,2072]"
+    },
+    {
+      "src": "=: = [188,189]",
+      "dest": "=: = [188,189]"
+    },
+    {
+      "src": "argument_list [814,836]",
+      "dest": "argument_list [814,836]"
+    },
+    {
+      "src": "true: True [1062,1066]",
+      "dest": "true: True [1062,1066]"
+    },
+    {
+      "src": "expression_statement [1768,1788]",
+      "dest": "expression_statement [1754,1774]"
+    },
+    {
+      "src": "identifier: text [1068,1072]",
+      "dest": "identifier: text [1068,1072]"
+    },
+    {
+      "src": "argument_list [1914,1941]",
+      "dest": "argument_list [1900,1927]"
+    },
+    {
+      "src": "parameters [376,392]",
+      "dest": "parameters [376,392]"
+    },
+    {
+      "src": "=: = [251,252]",
+      "dest": "=: = [251,252]"
+    },
+    {
+      "src": "argument_list [1200,1215]",
+      "dest": "argument_list [1209,1224]"
+    },
+    {
+      "src": "argument_list [1466,1489]",
+      "dest": "argument_list [1452,1475]"
+    },
+    {
+      "src": "identifier: Repo [406,410]",
+      "dest": "identifier: Repo [406,410]"
+    },
+    {
+      "src": "identifier: repo_path [753,762]",
+      "dest": "identifier: repo_path [753,762]"
+    },
+    {
+      "src": "call [1292,1321]",
+      "dest": "call [1301,1330]"
+    },
+    {
+      "src": "expression_statement [298,333]",
+      "dest": "expression_statement [298,333]"
+    },
+    {
+      "src": "expression_statement [1957,1989]",
+      "dest": "expression_statement [1943,1975]"
+    },
+    {
+      "src": "string [1915,1935]",
+      "dest": "string [1901,1921]"
+    },
+    {
+      "src": "identifier: tag1 [788,792]",
+      "dest": "identifier: tag1 [788,792]"
+    },
+    {
+      "src": "=: = [600,601]",
+      "dest": "=: = [600,601]"
+    },
+    {
+      "src": "identifier: indent [1980,1986]",
+      "dest": "identifier: indent [1966,1972]"
+    },
+    {
+      "src": "function_definition [360,416]",
+      "dest": "function_definition [360,416]"
+    },
+    {
+      "src": "expression_statement [179,236]",
+      "dest": "expression_statement [179,236]"
+    },
+    {
+      "src": "pair [1393,1405]",
+      "dest": "pair [1402,1414]"
+    },
+    {
+      "src": "assignment [1329,1488]",
+      "dest": "assignment [1338,1474]"
+    },
+    {
+      "src": "expression_statement [1838,1897]",
+      "dest": "expression_statement [1824,1883]"
+    },
+    {
+      "src": "identifier: Repo [799,803]",
+      "dest": "identifier: Repo [799,803]"
+    },
+    {
+      "src": "identifier: GIT_SORT_TOPOLOGICAL [113,133]",
+      "dest": "identifier: GIT_SORT_TOPOLOGICAL [113,133]"
+    },
+    {
+      "src": "=: = [1820,1821]",
+      "dest": "=: = [1806,1807]"
+    },
+    {
+      "src": "expression_statement [1329,1488]",
+      "dest": "expression_statement [1338,1474]"
+    },
+    {
+      "src": "argument_list [787,793]",
+      "dest": "argument_list [787,793]"
+    },
+    {
+      "src": "call [737,774]",
+      "dest": "call [737,774]"
+    },
+    {
+      "src": "identifier: generate_metadata [1849,1866]",
+      "dest": "identifier: generate_metadata [1835,1852]"
+    },
+    {
+      "src": "attribute [737,752]",
+      "dest": "attribute [737,752]"
+    },
+    {
+      "src": "identifier: Repo [298,302]",
+      "dest": "identifier: Repo [298,302]"
+    },
+    {
+      "src": "argument_list [1041,1078]",
+      "dest": "argument_list [1041,1078]"
+    },
+    {
+      "src": "identifier: tempfile [253,261]",
+      "dest": "identifier: tempfile [253,261]"
+    },
+    {
+      "src": "from: from [82,86]",
+      "dest": "from: from [82,86]"
+    },
+    {
+      "src": "assignment [1744,1762]",
+      "dest": "assignment [1730,1748]"
+    },
+    {
+      "src": "string [932,942]",
+      "dest": "string [932,942]"
+    },
+    {
+      "src": "block [399,431]",
+      "dest": "block [399,431]"
+    },
+    {
+      "src": "string [1937,1940]",
+      "dest": "string [1923,1926]"
+    },
+    {
+      "src": "pair [1439,1489]",
+      "dest": "pair [1425,1475]"
+    },
+    {
+      "src": "identifier: clone_repo [143,153]",
+      "dest": "identifier: clone_repo [143,153]"
+    },
+    {
+      "src": "identifier: pygit2 [87,93]",
+      "dest": "identifier: pygit2 [87,93]"
+    },
+    {
+      "src": "dotted_name [113,133]",
+      "dest": "dotted_name [113,133]"
+    },
+    {
+      "src": "expression_statement [1744,1762]",
+      "dest": "expression_statement [1730,1748]"
+    },
+    {
+      "src": "call [1910,1941]",
+      "dest": "call [1896,1927]"
+    },
+    {
+      "src": "parameters [153,172]",
+      "dest": "parameters [153,172]"
+    },
+    {
+      "src": "call [566,584]",
+      "dest": "call [566,584]"
+    },
+    {
+      "src": "comment:     # tag1 = input(\"Enter first tag: \") [1659,1698]",
+      "dest": "comment:     # tag1 = input(\"Enter first tag: \") [1645,1684]"
+    },
+    {
+      "src": "string [1753,1762]",
+      "dest": "string [1739,1748]"
+    },
+    {
+      "src": "call [626,662]",
+      "dest": "call [626,662]"
+    },
+    {
+      "src": "list [910,1021]",
+      "dest": "list [910,1021]"
+    },
+    {
+      "src": "call [298,333]",
+      "dest": "call [298,333]"
+    },
+    {
+      "src": "identifier: repo_url [179,187]",
+      "dest": "identifier: repo_url [179,187]"
+    },
+    {
+      "src": "identifier: repo_path [476,485]",
+      "dest": "identifier: repo_path [476,485]"
+    },
+    {
+      "src": "dotted_name [65,68]",
+      "dest": "dotted_name [65,68]"
+    },
+    {
+      "src": "identifier: repo_name [1311,1320]",
+      "dest": "identifier: repo_name [1320,1329]"
+    },
+    {
+      "src": "identifier: repo_url [314,322]",
+      "dest": "identifier: repo_url [314,322]"
+    },
+    {
+      "src": "string [2003,2050]",
+      "dest": "string [1989,2036]"
+    },
+    {
+      "src": "identifier: tag2 [1268,1272]",
+      "dest": "identifier: tag2 [1277,1281]"
+    },
+    {
+      "src": "block [1744,2037]",
+      "dest": "block [1730,2023]"
+    },
+    {
+      "src": "argument_list [618,620]",
+      "dest": "argument_list [618,620]"
+    },
+    {
+      "src": "import_statement [24,41]",
+      "dest": "import_statement [24,41]"
+    },
+    {
+      "src": "identifier: repo_name [1768,1777]",
+      "dest": "identifier: repo_name [1754,1763]"
+    },
+    {
+      "src": "identifier: f [1977,1978]",
+      "dest": "identifier: f [1963,1964]"
+    },
+    {
+      "src": "expression_statement [427,449]",
+      "dest": "expression_statement [427,449]"
+    },
+    {
+      "src": "identifier: tempfile [602,610]",
+      "dest": "identifier: tempfile [602,610]"
+    },
+    {
+      "src": "identifier: mkdtemp [262,269]",
+      "dest": "identifier: mkdtemp [262,269]"
+    },
+    {
+      "src": "identifier: subprocess [1027,1037]",
+      "dest": "identifier: subprocess [1027,1037]"
+    },
+    {
+      "src": "argument_list [313,333]",
+      "dest": "argument_list [313,333]"
+    },
+    {
+      "src": "identifier: tag [388,391]",
+      "dest": "identifier: tag [388,391]"
+    },
+    {
+      "src": "with_clause [1910,1946]",
+      "dest": "with_clause [1896,1932]"
+    },
+    {
+      "src": "identifier: tag1 [487,491]",
+      "dest": "identifier: tag1 [487,491]"
+    },
+    {
+      "src": "expression_statement [1794,1809]",
+      "dest": "expression_statement [1780,1795]"
+    },
+    {
+      "src": "identifier: temp_dir [324,332]",
+      "dest": "identifier: temp_dir [324,332]"
+    },
+    {
+      "src": "=: = [1986,1987]",
+      "dest": "=: = [1972,1973]"
+    },
+    {
+      "src": "attribute [602,618]",
+      "dest": "attribute [602,618]"
+    },
+    {
+      "src": "parameters [1533,1535]",
+      "dest": "parameters [1519,1521]"
+    },
+    {
+      "src": "call [602,620]",
+      "dest": "call [602,620]"
+    },
+    {
+      "src": "keyword_argument [1068,1077]",
+      "dest": "keyword_argument [1068,1077]"
+    },
+    {
+      "src": "identifier: cmd [1042,1045]",
+      "dest": "identifier: cmd [1042,1045]"
+    },
+    {
+      "src": "string [2072,2082]",
+      "dest": "string [2058,2068]"
+    },
+    {
+      "src": "return_statement [1504,1519]",
+      "dest": "return_statement [1490,1505]"
+    },
+    {
+      "src": "function_definition [1221,1466]",
+      "dest": "function_definition [1230,1452]"
+    },
+    {
+      "src": "string [921,930]",
+      "dest": "string [921,930]"
+    },
+    {
+      "src": "return_statement [1183,1215]",
+      "dest": "return_statement [1192,1224]"
+    },
+    {
+      "src": "call [406,421]",
+      "dest": "call [406,421]"
+    },
+    {
+      "src": "assignment [590,620]",
+      "dest": "assignment [590,620]"
+    },
+    {
+      "src": "call [1450,1489]",
+      "dest": "call [1436,1475]"
+    },
+    {
+      "src": "attribute [1957,1966]",
+      "dest": "attribute [1943,1952]"
+    },
+    {
+      "src": "integer: 2 [1987,1988]",
+      "dest": "integer: 2 [1973,1974]"
+    },
+    {
+      "src": "call [253,271]",
+      "dest": "call [253,271]"
+    },
+    {
+      "src": "comment:     # repo_name = input(\"Enter GitHub repository name: \") [1600,1657]",
+      "dest": "comment:     # repo_name = input(\"Enter GitHub repository name: \") [1586,1643]"
+    },
+    {
+      "src": "identifier: Repo [737,741]",
+      "dest": "identifier: Repo [737,741]"
+    },
+    {
+      "src": "import_statement [43,58]",
+      "dest": "import_statement [43,58]"
+    },
+    {
+      "src": "expression_statement [904,1009]",
+      "dest": "expression_statement [904,1009]"
+    },
+    {
+      "src": "with_item [1910,1946]",
+      "dest": "with_item [1896,1932]"
+    },
+    {
+      "src": "identifier: repo_name [162,171]",
+      "dest": "identifier: repo_name [162,171]"
+    },
+    {
+      "src": "identifier: clone_repo [1292,1302]",
+      "dest": "identifier: clone_repo [1301,1311]"
+    },
+    {
+      "src": "identifier: tag1 [1401,1405]",
+      "dest": "identifier: tag1 [1410,1414]"
+    },
+    {
+      "src": "=: = [1290,1291]",
+      "dest": "=: = [1299,1300]"
+    },
+    {
+      "src": "attribute [427,444]",
+      "dest": "attribute [427,444]"
+    },
+    {
+      "src": "identifier: result [1018,1024]",
+      "dest": "identifier: result [1018,1024]"
+    },
+    {
+      "src": "argument_list [269,271]",
+      "dest": "argument_list [269,271]"
+    },
+    {
+      "src": "identifier: clone_from [303,313]",
+      "dest": "identifier: clone_from [303,313]"
+    },
+    {
+      "src": "identifier: temp_dir [283,291]",
+      "dest": "identifier: temp_dir [283,291]"
+    },
+    {
+      "src": "call [799,855]",
+      "dest": "call [799,855]"
+    },
+    {
+      "src": "expression_statement [1815,1830]",
+      "dest": "expression_statement [1801,1816]"
+    },
+    {
+      "src": "call [737,793]",
+      "dest": "call [737,793]"
+    },
+    {
+      "src": "assignment [399,421]",
+      "dest": "assignment [399,421]"
+    },
+    {
+      "src": "identifier: mkdtemp [611,618]",
+      "dest": "identifier: mkdtemp [611,618]"
+    },
+    {
+      "src": "function_definition [139,320]",
+      "dest": "function_definition [139,320]"
+    },
+    {
+      "src": "identifier: result [1201,1207]",
+      "dest": "identifier: result [1210,1216]"
+    },
+    {
+      "src": "string [632,661]",
+      "dest": "string [632,661]"
+    },
+    {
+      "src": "argument_list [631,662]",
+      "dest": "argument_list [631,662]"
+    },
+    {
+      "src": "identifier: repo_path [411,420]",
+      "dest": "identifier: repo_path [411,420]"
+    },
+    {
+      "src": "attribute [1201,1214]",
+      "dest": "attribute [1210,1223]"
+    },
+    {
+      "src": "comment:     # Clean up temporary directories [1086,1122]",
+      "dest": "comment:     # [1084,1089]"
+    },
+    {
+      "src": "identifier: repo_path [815,824]",
+      "dest": "identifier: repo_path [815,824]"
+    },
+    {
+      "src": "=: = [1778,1779]",
+      "dest": "=: = [1764,1765]"
+    },
+    {
+      "src": "identifier: checkout [779,787]",
+      "dest": "identifier: checkout [779,787]"
+    },
+    {
+      "src": "comparison_operator: == [2069,2071]",
+      "dest": "comparison_operator: == [2055,2057]"
+    },
+    {
+      "src": "assignment [1838,1897]",
+      "dest": "assignment [1824,1883]"
+    },
+    {
+      "src": "identifier: repo_path [377,386]",
+      "dest": "identifier: repo_path [377,386]"
+    },
+    {
+      "src": "identifier: temp_dir [242,250]",
+      "dest": "identifier: temp_dir [242,250]"
+    },
+    {
+      "src": "identifier: tag2 [1484,1488]",
+      "dest": "identifier: tag2 [1470,1474]"
+    },
+    {
+      "src": "identifier: tag2 [493,497]",
+      "dest": "identifier: tag2 [493,497]"
+    },
+    {
+      "src": "argument_list [1866,1897]",
+      "dest": "argument_list [1852,1883]"
+    },
+    {
+      "src": "identifier: git [65,68]",
+      "dest": "identifier: git [65,68]"
+    },
+    {
+      "src": "comment:     # tag2 = input(\"Enter second tag: \") [1700,1740]",
+      "dest": "comment:     # tag2 = input(\"Enter second tag: \") [1686,1726]"
+    },
+    {
+      "src": "=: = [1025,1026]",
+      "dest": "=: = [1025,1026]"
+    },
+    {
+      "src": "expression_statement [799,855]",
+      "dest": "expression_statement [799,855]"
+    },
+    {
+      "src": "identifier: run [1038,1041]",
+      "dest": "identifier: run [1038,1041]"
+    },
+    {
+      "src": "identifier: repo [399,403]",
+      "dest": "identifier: repo [399,403]"
+    },
+    {
+      "src": "identifier: tag [445,448]",
+      "dest": "identifier: tag [445,448]"
+    },
+    {
+      "src": "as_pattern_target [1945,1946]",
+      "dest": "as_pattern_target [1931,1932]"
+    },
+    {
+      "src": "string [1439,1448]",
+      "dest": "string [1425,1434]"
+    },
+    {
+      "src": "comment:     # Run GumTree on the entire project [863,902]",
+      "dest": "comment:     # Run GumTree on the entire project [863,902]"
+    },
+    {
+      "src": "expression_statement [1018,1078]",
+      "dest": "expression_statement [1018,1078]"
+    },
+    {
+      "src": "identifier: os [7,9]",
+      "dest": "identifier: os [7,9]"
+    },
+    {
+      "src": "dotted_name [7,9]",
+      "dest": "dotted_name [7,9]"
+    },
+    {
+      "src": "assignment [904,1009]",
+      "dest": "assignment [904,1009]"
+    },
+    {
+      "src": "identifier: run_gumtree_diff [1450,1466]",
+      "dest": "identifier: run_gumtree_diff [1436,1452]"
+    },
+    {
+      "src": "assignment [1280,1321]",
+      "dest": "assignment [1289,1330]"
+    },
+    {
+      "src": "identifier: temp_dir1 [976,985]",
+      "dest": "identifier: temp_dir1 [976,985]"
+    },
+    {
+      "src": "=: = [1338,1339]",
+      "dest": "=: = [1347,1348]"
+    },
+    {
+      "src": "argument_list [282,292]",
+      "dest": "argument_list [282,292]"
+    },
+    {
+      "src": "attribute [737,787]",
+      "dest": "attribute [737,787]"
+    },
+    {
+      "src": "identifier: main [2089,2093]",
+      "dest": "identifier: main [2075,2079]"
+    },
+    {
+      "src": "identifier: loads [1195,1200]",
+      "dest": "identifier: loads [1204,1209]"
+    },
+    {
+      "src": "call [1957,1989]",
+      "dest": "call [1943,1975]"
+    },
+    {
+      "src": "pair [1351,1382]",
+      "dest": "pair [1360,1391]"
+    },
+    {
+      "src": "string [1801,1809]",
+      "dest": "string [1787,1795]"
+    },
+    {
+      "src": "block [179,301]",
+      "dest": "block [179,301]"
+    },
+    {
+      "src": "comment:     # Clone the repository twice and checkout the respective tags [670,735]",
+      "dest": "comment:     # Clone the repository twice and checkout the respective tags [670,735]"
+    },
+    {
+      "src": "argument_list [582,584]",
+      "dest": "argument_list [582,584]"
+    },
+    {
+      "src": "comment:     # author = input(\"Enter GitHub repository author: \") [1542,1598]",
+      "dest": "comment:     # author = input(\"Enter GitHub repository author: \") [1528,1584]"
+    },
+    {
+      "src": "argument_list [752,774]",
+      "dest": "argument_list [752,774]"
+    },
+    {
+      "src": "identifier: print [1997,2002]",
+      "dest": "identifier: print [1983,1988]"
+    },
+    {
+      "src": "expression_statement [1280,1321]",
+      "dest": "expression_statement [1289,1330]"
+    },
+    {
+      "src": "identifier: stdout [1208,1214]",
+      "dest": "identifier: stdout [1217,1223]"
+    },
+    {
+      "src": "dotted_name [76,80]",
+      "dest": "dotted_name [76,80]"
+    },
+    {
+      "src": "identifier: json [18,22]",
+      "dest": "identifier: json [18,22]"
+    },
+    {
+      "src": "identifier: checkout_tag [364,376]",
+      "dest": "identifier: checkout_tag [364,376]"
+    },
+    {
+      "src": "attribute [566,582]",
+      "dest": "attribute [566,582]"
+    },
+    {
+      "src": "identifier: git [432,435]",
+      "dest": "identifier: git [432,435]"
+    },
+    {
+      "src": "parameters [475,498]",
+      "dest": "parameters [475,498]"
+    },
+    {
+      "src": "string [1780,1788]",
+      "dest": "string [1766,1774]"
+    },
+    {
+      "src": "block [1280,1482]",
+      "dest": "block [1289,1468]"
+    },
+    {
+      "src": "call [427,449]",
+      "dest": "call [427,449]"
+    },
+    {
+      "src": "call [2089,2095]",
+      "dest": "call [2075,2081]"
+    },
+    {
+      "src": "expression_statement [2089,2095]",
+      "dest": "expression_statement [2075,2081]"
+    },
+    {
+      "src": "call [1849,1897]",
+      "dest": "call [1835,1883]"
+    },
+    {
+      "src": "function_definition [455,1171]",
+      "dest": "function_definition [455,1180]"
+    },
+    {
+      "src": "identifier: capture_output [1047,1061]",
+      "dest": "identifier: capture_output [1047,1061]"
+    },
+    {
+      "src": "assignment [554,584]",
+      "dest": "assignment [554,584]"
+    },
+    {
+      "src": "identifier: temp_dir [346,354]",
+      "dest": "identifier: temp_dir [346,354]"
+    },
+    {
+      "src": "from: from [60,64]",
+      "dest": "from: from [60,64]"
+    },
+    {
+      "src": "identifier: tag1 [1262,1266]",
+      "dest": "identifier: tag1 [1271,1275]"
+    },
+    {
+      "src": "expression_statement [1997,2051]",
+      "dest": "expression_statement [1983,2037]"
+    },
+    {
+      "src": "=: = [1072,1073]",
+      "dest": "=: = [1072,1073]"
+    },
+    {
+      "src": "block [2089,2095]",
+      "dest": "block [2075,2081]"
+    },
+    {
+      "src": "identifier: tag2 [1892,1896]",
+      "dest": "identifier: tag2 [1878,1882]"
+    },
+    {
+      "src": "identifier: print [277,282]",
+      "dest": "identifier: print [277,282]"
+    },
+    {
+      "src": "block [554,1189]",
+      "dest": "block [554,1198]"
+    },
+    {
+      "src": "identifier: repo_path [1280,1289]",
+      "dest": "identifier: repo_path [1289,1298]"
+    },
+    {
+      "src": "import_from_statement [82,133]",
+      "dest": "import_from_statement [82,133]"
+    },
+    {
+      "src": "as_pattern [1910,1946]",
+      "dest": "as_pattern [1896,1932]"
+    },
+    {
+      "src": "argument_list [444,449]",
+      "dest": "argument_list [444,449]"
+    },
+    {
+      "src": "function_definition [1525,2040]",
+      "dest": "function_definition [1511,2026]"
+    },
+    {
+      "src": "identifier: temp_dir2 [996,1005]",
+      "dest": "identifier: temp_dir2 [996,1005]"
+    },
+    {
+      "src": "expression_statement [277,292]",
+      "dest": "expression_statement [277,292]"
+    },
+    {
+      "src": "argument_list [849,855]",
+      "dest": "argument_list [849,855]"
+    },
+    {
+      "src": "=: = [1061,1062]",
+      "dest": "=: = [1061,1062]"
+    },
+    {
+      "src": "identifier: tag1 [1794,1798]",
+      "dest": "identifier: tag1 [1780,1784]"
+    },
+    {
+      "src": "identifier: json [1957,1961]",
+      "dest": "identifier: json [1943,1947]"
+    },
+    {
+      "src": "string [1351,1357]",
+      "dest": "string [1360,1366]"
+    },
+    {
+      "src": "block [1957,1989]",
+      "dest": "block [1943,1975]"
+    },
+    {
+      "src": "identifier: generate_metadata [1225,1242]",
+      "dest": "identifier: generate_metadata [1234,1251]"
+    },
+    {
+      "src": "assignment [1815,1830]",
+      "dest": "assignment [1801,1816]"
+    },
+    {
+      "src": "comparison_operator [2060,2082]",
+      "dest": "comparison_operator [2046,2068]"
+    },
+    {
+      "src": "identifier: author [1303,1309]",
+      "dest": "identifier: author [1312,1318]"
+    },
+    {
+      "src": "with_statement [1905,1951]",
+      "dest": "with_statement [1891,1937]"
+    },
+    {
+      "src": "identifier: tempfile [50,58]",
+      "dest": "identifier: tempfile [50,58]"
+    },
+    {
+      "src": "attribute [298,313]",
+      "dest": "attribute [298,313]"
+    },
+    {
+      "src": "=: = [1847,1848]",
+      "dest": "=: = [1833,1834]"
+    },
+    {
+      "src": "call [799,836]",
+      "dest": "call [799,836]"
+    },
+    {
+      "src": "return_statement [339,354]",
+      "dest": "return_statement [339,354]"
+    },
+    {
+      "src": "dotted_name [50,58]",
+      "dest": "dotted_name [50,58]"
+    },
+    {
+      "src": "argument_list [2002,2051]",
+      "dest": "argument_list [1988,2037]"
+    },
+    {
+      "src": "string [1393,1399]",
+      "dest": "string [1402,1408]"
+    },
+    {
+      "src": "attribute [799,849]",
+      "dest": "attribute [799,849]"
+    },
+    {
+      "src": "identifier: dump [1962,1966]",
+      "dest": "identifier: dump [1948,1952]"
+    },
+    {
+      "src": "call [1997,2051]",
+      "dest": "call [1983,2037]"
+    },
+    {
+      "src": "identifier: clone_from [804,814]",
+      "dest": "identifier: clone_from [804,814]"
+    },
+    {
+      "src": "true: True [1073,1077]",
+      "dest": "true: True [1073,1077]"
+    },
+    {
+      "src": "identifier: checkout [436,444]",
+      "dest": "identifier: checkout [436,444]"
+    },
+    {
+      "src": "import_from_statement [60,80]",
+      "dest": "import_from_statement [60,80]"
+    },
+    {
+      "src": "attribute [799,814]",
+      "dest": "attribute [799,814]"
+    },
+    {
+      "src": "identifier: metadata [1838,1846]",
+      "dest": "identifier: metadata [1824,1832]"
+    },
+    {
+      "src": "string [190,236]",
+      "dest": "string [190,236]"
+    },
+    {
+      "src": "identifier: repo_path [1467,1476]",
+      "dest": "identifier: repo_path [1453,1462]"
+    },
+    {
+      "src": "string [1359,1382]",
+      "dest": "string [1368,1391]"
+    },
+    {
+      "src": "identifier: tag2 [850,854]",
+      "dest": "identifier: tag2 [850,854]"
+    },
+    {
+      "src": "identifier: cmd [904,907]",
+      "dest": "identifier: cmd [904,907]"
+    },
+    {
+      "src": "expression_statement [737,793]",
+      "dest": "expression_statement [737,793]"
+    },
+    {
+      "src": "if_statement [2057,2069]",
+      "dest": "if_statement [2043,2055]"
+    },
+    {
+      "src": "identifier: Repository [101,111]",
+      "dest": "identifier: Repository [101,111]"
+    },
+    {
+      "src": "assignment [179,236]",
+      "dest": "assignment [179,236]"
+    },
+    {
+      "src": "identifier: git [837,840]",
+      "dest": "identifier: git [837,840]"
+    },
+    {
+      "src": "attribute [737,778]",
+      "dest": "attribute [737,778]"
+    },
+    {
+      "src": "identifier: Repo [76,80]",
+      "dest": "identifier: Repo [76,80]"
+    },
+    {
+      "src": "identifier: tag2 [1815,1819]",
+      "dest": "identifier: tag2 [1801,1805]"
+    },
+    {
+      "src": "identifier: json [1190,1194]",
+      "dest": "identifier: json [1199,1203]"
+    },
+    {
+      "src": "identifier: metadata [1967,1975]",
+      "dest": "identifier: metadata [1953,1961]"
+    },
+    {
+      "src": "identifier: mkdtemp [575,582]",
+      "dest": "identifier: mkdtemp [575,582]"
+    },
+    {
+      "src": "attribute [1190,1200]",
+      "dest": "attribute [1199,1209]"
+    },
+    {
+      "src": "attribute [427,435]",
+      "dest": "attribute [427,435]"
+    },
+    {
+      "src": "identifier: clone_from [742,752]",
+      "dest": "identifier: clone_from [742,752]"
+    },
+    {
+      "src": "dotted_name [101,111]",
+      "dest": "dotted_name [101,111]"
+    },
+    {
+      "src": "dotted_name [31,41]",
+      "dest": "dotted_name [31,41]"
+    }
+  ],
+  "actions": [
+    {
+      "action": "update-node",
+      "tree": "comment:     # Clean up temporary directories [1086,1122]",
+      "label": "    #"
+    },
+    {
+      "action": "insert-node",
+      "tree": "comment:     # # Clean up temporary directories [1091,1129]",
+      "parent": "block [554,1198]",
+      "at": 10
+    },
+    {
+      "action": "insert-node",
+      "tree": "comment:     # subprocess.run([\"rm\", \"-rf\", temp_dir1, temp_dir2]) [1131,1188]",
+      "parent": "block [554,1198]",
+      "at": 11
+    },
+    {
+      "action": "delete-tree",
+      "tree": "expression_statement [1124,1175]"
+    },
+    {
+      "action": "delete-tree",
+      "tree": "pair [1416,1428]"
+    }
+  ]
+}

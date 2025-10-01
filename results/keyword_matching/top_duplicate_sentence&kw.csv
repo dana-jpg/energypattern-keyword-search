@@ -1,0 +1,2 @@
+,sentence,keyword,keyword_raw,matched_word,match_idx,qa,source,url,repo_id,sent_kw_n
+0,Note: this method is deprecated and will be removed in a future release. Webhook-related functionality will be moved from plugin to core modules.,core,core,core,132,energy efficiency,code_comment,https://github.com/saleor/saleor/tree/3.21.19/saleor/plugins/manager.py,saleor/saleor/3.21.19,146

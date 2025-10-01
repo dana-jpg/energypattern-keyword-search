@@ -1,0 +1,6 @@
+'tf_vectorizer', (11302912, 451589)
+'tfidf_vectorizer', (11755008, 878303)
+'global_term_doc_count_map', (12633600, 424713)
+'global_term_idf_map', (13058560, 878866)
+'preprocessing_version', (7354880, 19)
+'corpus_raw_text_hash', (7355392, 47)
