@@ -3,11 +3,12 @@ import shelve
 import time
 from dataclasses import dataclass
 from datetime import datetime
-from typing import ClassVar, Dict, cast, TypeGuard, List, Iterator, Literal
+from typing import ClassVar, Dict, Optional, Set, cast, TypeGuard, List, Iterator, Literal
 
 from github import Github
 from github.Issue import Issue
 from github.IssueComment import IssueComment
+from github.PullRequest import PullRequest
 from github import RateLimitExceededException
 from tqdm import tqdm
 
@@ -82,6 +83,24 @@ class IssueDTO:
     def id(self):
         return self._id
 
+@dataclass
+class PullRequestDTO:
+    _id: int
+    html_url: str
+    number: int
+    title: str
+    body: str
+    state: str
+    created_at: datetime
+    updated_at: datetime
+    closed_at: datetime
+    labels: List[str]
+    comments_data: List[CommentDTO]
+    issues: List[IssueDTO]
+
+    @property
+    def id(self):
+        return self._id
 
 @dataclass
 class ReleaseDTO:
@@ -178,9 +197,45 @@ class GithubDataFetcher:
             if len(batch) > 0:
                 yield batch
 
+    def get_prs(self, batch_size: int = 10) -> Iterator[List[PullRequestDTO]]:
+        assert batch_size > 0, "Batch size must be greater than 0"
+        repo = self.github.get_repo(self.repo.git_id)
+
+        prs_cache_dir = AbsDirPath.CACHE / "prs"
+        os.makedirs(prs_cache_dir, exist_ok=True)
+        with shelve.open(prs_cache_dir / self.repo.repo_name) as db:
+            # Get all pull requests
+            prs = repo.get_pulls(state='all', direction='asc')
+            total_count = prs.totalCount
+
+            batch = []
+            for pr in tqdm(prs, total=total_count, desc="Fetching Pull Requests"):
+                try:
+                    batch.append(self._map_pr_to_dto(pr))
+
+                    if len(batch) == batch_size:
+                        yield batch
+                        db["since"] = pr.created_at
+                        batch.clear()
+
+                    self._respect_rate_limit(min_remaining=100)
+
+                except RateLimitExceededException as rle:
+                    # Fallback safety: if we still hit the limit, sleep until reset and continue
+                    # PyGithub raises this with headers already parsed; the global attributes are set.
+                    self._respect_rate_limit(min_remaining=1)
+                    continue
+                except Exception as e:
+                    print(f"Error processing Pull Request #{getattr(pr, 'number', '?')}: {str(e)}")
+                    continue
+
+            if len(batch) > 0:
+                yield batch
+
+
     def _map_issue_to_dto(self, issue: Issue) -> IssueDTO:
         # Get reactions for the issue
-        reactions = self._get_reactions(issue)
+        # reactions = self._get_reactions(issue)
         # Get comments with their reactions
         comments_data = self._get_comments(issue)
         issue_data = IssueDTO(_id=issue.id, html_url=issue.html_url, number=issue.number,
@@ -191,8 +246,111 @@ class GithubDataFetcher:
                               author=issue.user.login if issue.user else None,
                               assignees=[assignee.login for assignee in issue.assignees],
                               milestone=issue.milestone.title if issue.milestone else None,
-                              comments_count=issue.comments, comments_data=comments_data, reactions=reactions)
+                              comments_count=issue.comments, comments_data=comments_data, reactions=None)
         return issue_data
+    
+    def _map_pr_to_dto(self, pull_request: PullRequest) -> PullRequestDTO:
+        comments_data = self._get_pr_comments(pull_request)
+        related_issues = self._get_pr_related_issues(pull_request)
+        pr_data = PullRequestDTO(_id=pull_request.id, html_url=pull_request.html_url, number=pull_request.number,
+                              title=pull_request.title, body=pull_request.body, state=pull_request.state, created_at=pull_request.created_at,
+                              updated_at=pull_request.updated_at, closed_at=pull_request.closed_at,
+                              labels=[label.name for label in pull_request.labels],
+                              comments_data=comments_data, issues=related_issues)
+        return pr_data
+
+    def _graphql(self, query: str, variables: dict) -> dict:
+        _headers, payload = self.github._Github__requester.graphql_query(
+            query=query,
+            variables=variables
+        )
+        # Normalize shape to return only the "data" object
+        if isinstance(payload, dict):
+            if "errors" in payload and payload["errors"]:
+                # surface the first error (you can log the whole list)
+                raise RuntimeError(f"GraphQL error: {payload['errors'][0]}")
+            if "data" in payload and isinstance(payload["data"], dict):
+                return payload["data"]
+        # Fallback: return as-is (defensive)
+        return payload
+
+    
+    def _get_pr_related_issues(self, pull_request: PullRequest) -> List[IssueDTO]:
+        repo = self.github.get_repo(self.repo.git_id)
+        owner, name = repo.full_name.split("/", 1)
+        pr_number = pull_request.number
+    
+        issue_numbers: set[int] = set()
+    
+        # A) Issues this PR closes (via closing keywords / commits)
+        cursor = None
+        while True:
+            query = """
+            query($owner:String!, $name:String!, $number:Int!, $first:Int!, $after:String) {
+              repository(owner:$owner, name:$name) {
+                pullRequest(number:$number) {
+                  closingIssuesReferences(first:$first, after:$after) {
+                    nodes { number }
+                    pageInfo { hasNextPage endCursor }
+                  }
+                }
+              }
+            }"""
+            data = self._graphql(query, {
+                "owner": owner, "name": name, "number": pr_number,
+                "first": 50, "after": cursor
+            })
+            refs = data["repository"]["pullRequest"]["closingIssuesReferences"]
+            for n in refs["nodes"]:
+                issue_numbers.add(int(n["number"]))
+            if not refs["pageInfo"]["hasNextPage"]:
+                break
+            cursor = refs["pageInfo"]["endCursor"]
+    
+        # B) Issues that cross-reference (mention) this PR
+        cursor = None
+        while True:
+            query = """
+            query($owner:String!, $name:String!, $number:Int!, $first:Int!, $after:String) {
+              repository(owner:$owner, name:$name) {
+                pullRequest(number:$number) {
+                  timelineItems(itemTypes: CROSS_REFERENCED_EVENT, first:$first, after:$after) {
+                    nodes {
+                      ... on CrossReferencedEvent {
+                        source { __typename ... on Issue { number } }
+                      }
+                    }
+                    pageInfo { hasNextPage endCursor }
+                  }
+                }
+              }
+            }"""
+            data = self._graphql(query, {
+                "owner": owner, "name": name, "number": pr_number,
+                "first": 100, "after": cursor
+            })
+            items = data["repository"]["pullRequest"]["timelineItems"]
+            for node in items["nodes"]:
+                src = node.get("source") or {}
+                if src.get("__typename") == "Issue" and "number" in src:
+                    issue_numbers.add(int(src["number"]))
+            if not items["pageInfo"]["hasNextPage"]:
+                break
+            cursor = items["pageInfo"]["endCursor"]
+    
+        # Fetch & map full issue objects via REST (reuses your DTO mapper)
+        issues_dto: list[IssueDTO] = []
+        for num in sorted(issue_numbers):
+            try:
+                gh_issue = repo.get_issue(number=num)
+                issues_dto.append(self._map_issue_to_dto(gh_issue))
+                self._respect_rate_limit(min_remaining=100)
+            except RateLimitExceededException:
+                self._respect_rate_limit(min_remaining=1)
+            except Exception as e:
+                print(f"Error fetching Issue #{num} linked to PR #{pr_number}: {e}")
+        return issues_dto
+    
 
     def _get_comments(self, issue: Issue) -> List[CommentDTO]:
         """Fetch all comments for an issue with their reactions"""
@@ -206,6 +364,25 @@ class GithubDataFetcher:
                                           body=comment.body, user=comment.user.login if comment.user else None,
                                           created_at=comment.created_at, updated_at=comment.updated_at,
                                           reactions=reactions)
+                comments_data.append(comment_data)
+
+            except Exception as e:
+                print(f"Error processing comment {comment.id}: {str(e)}")
+                continue
+
+        return comments_data
+
+    def _get_pr_comments(self, pr: PullRequest) -> List[CommentDTO]:
+        """Fetch all comments for an issue with their reactions"""
+        comments_data = []
+
+        for comment in pr.get_issue_comments():
+            try:
+
+                comment_data = CommentDTO(_id=comment.id, issue_id=pr.id, html_url=comment.html_url,
+                                          body=comment.body, user=comment.user.login if comment.user else None,
+                                          created_at=comment.created_at, updated_at=comment.updated_at,
+                                          reactions=None)
                 comments_data.append(comment_data)
 
             except Exception as e:

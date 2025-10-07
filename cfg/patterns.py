@@ -89,7 +89,7 @@ patterns_raw = {
 
         # G6: Remove unnecessary state
         "remove debug variable", "remove temp variable", "avoid storing computed data",
-        "reduce intermediate state", "avoid duplicate state",
+        "reduce intermediate state", "avoid duplicate state"
     ]
 }
 

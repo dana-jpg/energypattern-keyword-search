@@ -208,7 +208,13 @@ class RepoDataKeywordExtractor(KeywordExtractor):
         self.db = db
         self.source_to_generator_map = {MatchSource.ISSUE_COMMENT: db.extract_comments,
                                         MatchSource.ISSUE: db.extract_issues,
-                                        MatchSource.RELEASE: db.extract_releases}
+                                        MatchSource.RELEASE: db.extract_releases,
+                                        MatchSource.PR: db.extract_prs,
+                                        MatchSource.PR_COMMENT: db.extract_pr_comments,
+                                        MatchSource.PR_RELATED_ISSUE: db.extract_pr_related_issues,
+                                        MatchSource.PR_RELATED_ISSUE_COMMENT: db.extract_pr_related_issue_comments,
+                                        MatchSource.PR_CORPUS: db.extract_pr_corpus
+                                        }
 
     def _parse_source(self, source) -> List[FullMatch]:
         matches = []
@@ -226,6 +232,21 @@ class RepoDataKeywordExtractor(KeywordExtractor):
     def parse_issue_comments(self):
         return self._parse_source(MatchSource.ISSUE_COMMENT)
 
+    def parse_prs(self):
+        return self._parse_source(MatchSource.PR)
+    
+    def parse_pr_corpus(self):
+        return self._parse_source(MatchSource.PR_CORPUS)
+    
+    def parse_pr_comments(self):
+        return self._parse_source(MatchSource.PR_COMMENT)
+    
+    def parse_prs_related_issues(self):
+        return self._parse_source(MatchSource.PR_RELATED_ISSUE)
+    
+    def parse_pr_related_issue_comments(self):
+        return self._parse_source(MatchSource.PR_RELATED_ISSUE_COMMENT)
+    
     def parse_releases(self):
         return self._parse_source(MatchSource.RELEASE)
 
