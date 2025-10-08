@@ -1,0 +1,4 @@
+repo_full_name,stars,python_pct,contributors,commits_last_90d,pushed_at,html_url,web_frameworks_detected,description
+huggingface/transformers,150755,99.57,3600,1160,2025-10-08T16:26:50Z,https://github.com/huggingface/transformers,streamlit,"🤗 Transformers: the model-definition framework for state-of-the-art machine learning models in text, vision, audio, and multimodal models, for both inference and training."
+Significant-Gravitas/AutoGPT,178876,63.21,795,391,2025-10-08T16:28:28Z,https://github.com/Significant-Gravitas/AutoGPT,fastapi,"AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters."
+langflow-ai/langflow,129791,50.75,304,400,2025-10-08T16:27:52Z,https://github.com/langflow-ai/langflow,fastapi,Langflow is a powerful tool for building and deploying AI-powered agents and workflows.
