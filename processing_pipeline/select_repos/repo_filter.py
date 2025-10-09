@@ -113,6 +113,16 @@ def filter_repositories(
         if not full_name or "/" not in full_name:
             continue
 
+        # Exclude repos that appear to be frameworks or libraries
+        name_lower = full_name.lower()
+        desc_lower = (repo.get("description") or "").lower()
+        if "framework" in name_lower or "library" in name_lower or \
+        "toolkit" in desc_lower or "sdk" in desc_lower or \
+         "cli" in desc_lower or "command-line" in desc_lower or \
+        "framework" in desc_lower or "library" in desc_lower:
+            continue
+
+
         # progress line (exact format requested)
         if helpers.progress:
             helpers.progress(i, total, full_name)

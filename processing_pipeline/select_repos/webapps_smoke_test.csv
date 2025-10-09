@@ -1,8 +1,0 @@
-repo_full_name,stars,python_pct,contributors,commits_last_90d,pushed_at,html_url,web_frameworks_detected,description
-Significant-Gravitas/AutoGPT,178876,63.21,-1,-1,2025-10-08T16:10:43Z,https://github.com/Significant-Gravitas/AutoGPT,fastapi,"AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters."
-AUTOMATIC1111/stable-diffusion-webui,157129,87.46,-1,-1,2025-10-07T20:06:10Z,https://github.com/AUTOMATIC1111/stable-diffusion-webui,"fastapi,gradio",Stable Diffusion web UI
-huggingface/transformers,150755,99.57,-1,-1,2025-10-08T16:23:23Z,https://github.com/huggingface/transformers,streamlit,"🤗 Transformers: the model-definition framework for state-of-the-art machine learning models in text, vision, audio, and multimodal models, for both inference and training."
-langflow-ai/langflow,129791,50.75,-1,-1,2025-10-08T16:23:29Z,https://github.com/langflow-ai/langflow,fastapi,Langflow is a powerful tool for building and deploying AI-powered agents and workflows.
-langchain-ai/langchain,116816,98.58,-1,-1,2025-10-08T14:56:34Z,https://github.com/langchain-ai/langchain,fastapi,🦜🔗 Build context-aware reasoning applications
-fastapi/fastapi,90494,99.94,-1,-1,2025-10-08T14:51:45Z,https://github.com/fastapi/fastapi,flask,"FastAPI framework, high performance, easy to learn, fast to code, ready for production"
-bregman-arie/devops-exercises,79241,66.12,-1,-1,2025-10-07T17:14:54Z,https://github.com/bregman-arie/devops-exercises,flask,"Linux, Jenkins, AWS, SRE, Prometheus, Docker, Python, Ansible, Git, Kubernetes, Terraform, OpenStack, SQL, NoSQL, Azure, GCP, DNS, Elastic, Network, Virtualization. DevOps Interview Questions"
