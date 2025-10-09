@@ -6,15 +6,19 @@ Find GitHub repos that are > X% Python and meet minimum thresholds
 for stars, contributor count, and recent activity. After filtering,
 optionally detect whether they are likely *web applications* by scanning
 dependencies (requirements/pyproject/etc.) or via GitHub SBOM.
+
+Enhancements (no persistent state file):
+- --exclude / --exclude-csv to skip previously processed repos
+- --shuffle-candidates to randomize candidate order
+- --pushed-range to target non-overlapping time windows (e.g., 2025-07-01..2025-07-31)
 """
 
 import argparse
-import base64
 import csv
 import datetime as dt
+import glob
 import os
 import random
-import re
 import sys
 import time
 from typing import Dict, Iterable, List, Optional, Set, Tuple
@@ -208,6 +212,10 @@ def get_repo_sbom(owner: str, repo: str) -> Tuple[int, Iterable[Tuple[str, str]]
 # ---------- Search ----------
 
 def search_repositories(query: str, max_results: int, min_stars: int, pushed_since: Optional[str]) -> List[Dict]:
+    """
+    If pushed_since is provided, uses pushed:>=YYYY-MM-DD.
+    Otherwise rely entirely on 'query' which can include pushed:YYYY-MM-DD..YYYY-MM-DD.
+    """
     q_parts: List[str] = []
     if query:
         q_parts.append(query.strip())
@@ -263,6 +271,44 @@ def _append_matches_to_csv(path: str, days: int, matches: List[Tuple[Dict, float
                 (repo.get("description") or "").replace("\n", " ").strip()
             ])
 
+# ---------- Exclusion Helpers (no persistent state) ----------
+
+def _load_seen_from_txt(path: str) -> Set[str]:
+    seen: Set[str] = set()
+    if not path:
+        return seen
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            for line in f:
+                s = line.strip()
+                if s and not s.startswith("#"):
+                    seen.add(s)
+    except FileNotFoundError:
+        pass
+    return seen
+
+def _load_seen_from_csv(path: str) -> Set[str]:
+    seen: Set[str] = set()
+    if not path:
+        return seen
+    try:
+        with open(path, "r", encoding="utf-8", newline="") as f:
+            reader = csv.reader(f)
+            header = next(reader, [])
+            try:
+                idx = header.index("repo_full_name")
+            except ValueError:
+                idx = 0
+            for row in reader:
+                if not row:
+                    continue
+                name = (row[idx] or "").strip()
+                if name:
+                    seen.add(name)
+    except FileNotFoundError:
+        pass
+    return seen
+
 # ---------- Main ----------
 
 def main():
@@ -288,6 +334,15 @@ def main():
     parser.add_argument("--require-web-frameworks", action="store_true", help="If set with --detect-webapps, only keep repos where a known web framework is detected.")
     parser.add_argument("--frameworks", type=str, default="", help="Comma-separated list of frameworks to detect (overrides the default set).")
 
+    # Exclusions & variety
+    parser.add_argument("--exclude", action="append", default=[], help="Path to a text file (one owner/repo per line) to exclude. Can repeat.")
+    parser.add_argument("--exclude-csv", action="append", default=[], help="Path (or glob) to a CSV from previous runs; will exclude repo_full_name. Can repeat.")
+    parser.add_argument("--shuffle-candidates", action="store_true", help="Shuffle candidates before filtering/processing for more variety.")
+
+    # Non-overlapping pushed window
+    parser.add_argument("--pushed-range", type=str, default="",
+        help='Use a non-overlapping pushed window like "2025-07-01..2025-07-31". Overrides the default pushed>= filter.')
+
     args = parser.parse_args()
 
     # timezone-aware UTC
@@ -300,17 +355,44 @@ def main():
     if args.frameworks.strip():
         frameworks = {s.strip().lower() for s in args.frameworks.split(",") if s.strip()}
 
+    # Build exclusion set from files and CSVs
+    exclude_set: Set[str] = set()
+    for p in args.exclude:
+        exclude_set |= _load_seen_from_txt(p)
+    for pattern in args.exclude_csv:
+        for p in glob.glob(pattern):
+            exclude_set |= _load_seen_from_csv(p)
+
+    # Determine search query components
+    extra_query = args.query.strip()
+    if args.pushed_range:
+        # inject a non-overlapping pushed range; disable pushed_since
+        extra_query = (extra_query + " " if extra_query else "") + f"pushed:{args.pushed_range}"
+        pushed_since = None
+    else:
+        pushed_since = since_date
+
     # 1) Search candidates
     try:
         candidates = search_repositories(
-            query=args.query,
+            query=extra_query,
             max_results=args.max_results,
             min_stars=args.min_stars,
-            pushed_since=since_date
+            pushed_since=pushed_since
         )
     except Exception as e:
         print(f"Search failed: {e}", file=sys.stderr)
         sys.exit(1)
+
+    # Optional shuffle to vary top hits
+    if args.shuffle_candidates:
+        random.shuffle(candidates)
+
+    # Drop already-seen repos early
+    if exclude_set:
+        before = len(candidates)
+        candidates = [c for c in candidates if c.get("full_name") not in exclude_set]
+        print(f"[exclude] Skipped {before - len(candidates)} previously seen repos; {len(candidates)} remain.", flush=True)
 
     # Prepare CSV for incremental writes
     out_path = args.out_csv
@@ -321,7 +403,6 @@ def main():
     overall_results: List[Tuple[Dict, float, int, int, List[str]]] = []
     total = len(candidates)
 
-    processed_so_far = 0
     for start in range(0, total, BATCH_SIZE):
         end = min(start + BATCH_SIZE, total)
         batch = candidates[start:end]
@@ -363,10 +444,8 @@ def main():
 
         # Append batch matches to CSV immediately
         _append_matches_to_csv(out_path, args.days, batch_results)
-
         overall_results.extend(batch_results)
-        processed_so_far = end
-        print(f"\n[checkpoint] Processed {processed_so_far}/{total}; appended {len(batch_results)} matches (total so far: {len(overall_results)}).", flush=True)
+        print(f"\n[checkpoint] Processed {end}/{total}; appended {len(batch_results)} matches (total so far: {len(overall_results)}).", flush=True)
 
     # 3) Sort all results (final presentation)
     def score(t) -> int:
