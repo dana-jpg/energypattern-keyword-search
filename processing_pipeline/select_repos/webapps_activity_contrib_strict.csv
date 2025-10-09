@@ -1,0 +1,2 @@
+repo_full_name,stars,python_pct,contributors,commits_last_90d,pushed_at,html_url,web_frameworks_detected,description
+fastapi/fastapi,90496,99.94,849,257,2025-10-08T16:56:45Z,https://github.com/fastapi/fastapi,flask,"FastAPI framework, high performance, easy to learn, fast to code, ready for production"

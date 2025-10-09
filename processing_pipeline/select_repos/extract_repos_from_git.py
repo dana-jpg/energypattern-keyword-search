@@ -141,17 +141,13 @@ def count_recent_commits(owner: str, repo: str, since_iso: str) -> int:
     url = f"{BASE}/repos/{owner}/{repo}/commits"
     return count_via_last_page(url, params={"since": since_iso})
 
-# ---------- Repo Tree + Dependency Files ----------
+# ---------- Repo Tree + Dependency Files (kept for interface compatibility) ----------
 
 def get_default_branch(owner: str, repo: str) -> str:
     r = github_get(f"{BASE}/repos/{owner}/{repo}")
     return (r.json().get("default_branch") or "main")
 
 def list_repo_tree(owner: str, repo: str, ref: Optional[str] = None) -> List[str]:
-    """
-    Return a list of file paths in the repo (up to GitHub's tree limits).
-    Uses the Git Trees API with ?recursive=1.
-    """
     if not ref:
         ref = get_default_branch(owner, repo)
     r = github_get(f"{BASE}/repos/{owner}/{repo}/git/trees/{ref}", params={"recursive": "1"})
@@ -163,24 +159,18 @@ def list_repo_tree(owner: str, repo: str, ref: Optional[str] = None) -> List[str
     return paths
 
 def find_dependency_paths(owner: str, repo: str) -> List[str]:
-    """Kept for compatibility; unused when fallback is disabled."""
     return []
 
 def fetch_file_base64(owner: str, repo: str, path: str) -> Optional[str]:
-    """Kept for compatibility; unused when fallback is disabled."""
     return None
 
 # ---------- SBOM (fast path for dependency detection) ----------
 
 def _parse_purl_locator(locator: str) -> Tuple[Optional[str], Optional[str]]:
-    """
-    Parse a purl like "pkg:pypi/flask@2.0.0" -> ("pypi", "flask")
-    Returns (ecosystem, name)
-    """
     if not locator.startswith("pkg:"):
         return None, None
     try:
-        after = locator.split("pkg:", 1)[1]  # e.g. "pypi/flask@2.0.0"
+        after = locator.split("pkg:", 1)[1]
         eco, rest = after.split("/", 1)
         name = rest.split("@", 1)[0]
         eco = eco.strip().lower()
@@ -190,11 +180,6 @@ def _parse_purl_locator(locator: str) -> Tuple[Optional[str], Optional[str]]:
         return None, None
 
 def get_repo_sbom(owner: str, repo: str) -> Tuple[int, Iterable[Tuple[str, str]]]:
-    """
-    Calls GitHub's SBOM export:
-      GET /repos/{owner}/{repo}/dependency-graph/sbom
-    Returns (status_code, iterator over (ecosystem, package_name)).
-    """
     r = github_get(f"{BASE}/repos/{owner}/{repo}/dependency-graph/sbom", allow_404=True)
     status = r.status_code
     if status != 200:
@@ -223,10 +208,6 @@ def get_repo_sbom(owner: str, repo: str) -> Tuple[int, Iterable[Tuple[str, str]]
 # ---------- Search ----------
 
 def search_repositories(query: str, max_results: int, min_stars: int, pushed_since: Optional[str]) -> List[Dict]:
-    """
-    Use GitHub repository search to get candidate repos.
-    Anchored on language:Python with stars and pushed filters for recency/popularity.
-    """
     q_parts: List[str] = []
     if query:
         q_parts.append(query.strip())
@@ -252,6 +233,35 @@ def search_repositories(query: str, max_results: int, min_stars: int, pushed_sin
             break
         page += 1
     return items[:max_results]
+
+# ---------- Helpers for incremental CSV writing ----------
+
+def _write_csv_header(path: str, days: int) -> None:
+    with open(path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerow([
+            "repo_full_name", "stars", "python_pct", "contributors",
+            f"commits_last_{days}d", "pushed_at", "html_url",
+            "web_frameworks_detected", "description"
+        ])
+
+def _append_matches_to_csv(path: str, days: int, matches: List[Tuple[Dict, float, int, int, List[str]]]) -> None:
+    if not matches:
+        return
+    with open(path, "a", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        for (repo, py_pct, contributors, commits_recent, frameworks_found) in matches:
+            writer.writerow([
+                repo.get("full_name", ""),
+                int(repo.get("stargazers_count", 0)),
+                f"{py_pct:.2f}",
+                contributors,
+                commits_recent,
+                repo.get("pushed_at", "") or "",
+                repo.get("html_url", ""),
+                ",".join(frameworks_found),
+                (repo.get("description") or "").replace("\n", " ").strip()
+            ])
 
 # ---------- Main ----------
 
@@ -302,47 +312,71 @@ def main():
         print(f"Search failed: {e}", file=sys.stderr)
         sys.exit(1)
 
-    # 2) Filter + (optional) detect frameworks (SBOM only)
-    helpers = Helpers(
-        compute_python_percentage=compute_python_percentage,
-        count_contributors=count_contributors,
-        count_recent_commits=count_recent_commits,
-        fetch_file_base64=fetch_file_base64,       # kept for interface compatibility
-        find_dependency_paths=find_dependency_paths,  # kept for interface compatibility
-        get_repo_sbom=get_repo_sbom,  # returns (status, iterator)
-        # exact progress formatting requested
-        log=lambda msg: print(msg, flush=True),
-        progress=lambda i, total, name: print(f"\n[{i}/{total}] Checking {name} ...", flush=True),
-    )
-    params = FilterParams(
-        min_python=args.min_python,
-        min_stars=args.min_stars,
-        min_contributors=args.min_contributors,
-        min_commits=args.min_commits,
-        days=args.days,
-        skip_contributors=args.skip_contributors,
-        skip_activity=args.skip_activity,
-        detect_webapps=args.detect_webapps,
-        require_web_frameworks=args.require_web_frameworks,
-        frameworks=frameworks,
-        since_iso=since_iso,
-    )
+    # Prepare CSV for incremental writes
+    out_path = args.out_csv
+    _write_csv_header(out_path, args.days)
 
-    try:
-        results = filter_repositories(candidates, params, helpers)
-    except Exception as e:
-        print(f"Filtering failed: {e}", file=sys.stderr)
-        sys.exit(1)
+    # 2) Filter + detect in batches of 50; append matches after each batch
+    BATCH_SIZE = 50
+    overall_results: List[Tuple[Dict, float, int, int, List[str]]] = []
+    total = len(candidates)
 
-    # 3) Sort by simple score
+    processed_so_far = 0
+    for start in range(0, total, BATCH_SIZE):
+        end = min(start + BATCH_SIZE, total)
+        batch = candidates[start:end]
+
+        # progress function that shows overall progress
+        def _progress(i, _t, name, base_idx=start, grand_total=total):
+            # i is 1-based inside filter_repositories
+            print(f"\n[{base_idx + i}/{grand_total}] Checking {name} ...", flush=True)
+
+        helpers = Helpers(
+            compute_python_percentage=compute_python_percentage,
+            count_contributors=count_contributors,
+            count_recent_commits=count_recent_commits,
+            fetch_file_base64=fetch_file_base64,
+            find_dependency_paths=find_dependency_paths,
+            get_repo_sbom=get_repo_sbom,  # returns (status, iterator)
+            log=lambda msg: print(msg, flush=True),
+            progress=_progress,
+        )
+        params = FilterParams(
+            min_python=args.min_python,
+            min_stars=args.min_stars,
+            min_contributors=args.min_contributors,
+            min_commits=args.min_commits,
+            days=args.days,
+            skip_contributors=args.skip_contributors,
+            skip_activity=args.skip_activity,
+            detect_webapps=args.detect_webapps,
+            require_web_frameworks=args.require_web_frameworks,
+            frameworks=frameworks,
+            since_iso=since_iso,
+        )
+
+        try:
+            batch_results = filter_repositories(batch, params, helpers)
+        except Exception as e:
+            print(f"Filtering failed for batch {start}-{end}: {e}", file=sys.stderr)
+            batch_results = []
+
+        # Append batch matches to CSV immediately
+        _append_matches_to_csv(out_path, args.days, batch_results)
+
+        overall_results.extend(batch_results)
+        processed_so_far = end
+        print(f"\n[checkpoint] Processed {processed_so_far}/{total}; appended {len(batch_results)} matches (total so far: {len(overall_results)}).", flush=True)
+
+    # 3) Sort all results (final presentation)
     def score(t) -> int:
         repo, _, contribs, commits, _ = t
         return int(repo.get("stargazers_count", 0)) + 50 * max(contribs, 0) + 10 * max(commits, 0)
 
-    results.sort(key=score, reverse=True)
+    overall_results.sort(key=score, reverse=True)
 
     # 4) Print concise table
-    print(f"\nFound {len(results)} repositories matching criteria (>={args.min_python:.0f}% Python, "
+    print(f"\nFound {len(overall_results)} repositories matching criteria (>={args.min_python:.0f}% Python, "
           f"stars>={args.min_stars}, "
           f"{'contributors skipped' if args.skip_contributors else f'contributors>=' + str(args.min_contributors)}, "
           f"{'activity skipped' if args.skip_activity else f'commits(last ' + str(args.days) + 'd)>=' + str(args.min_commits)}"
@@ -351,7 +385,7 @@ def main():
 
     header = ["Repo", "Stars", "Python %", "Contributors", f"Commits last {args.days}d", "Pushed", "HTML URL", "Web Frameworks", "Description"]
     print("\t".join(header))
-    for (repo, py_pct, contributors, commits_recent, frameworks_found) in results[:args.limit_output]:
+    for (repo, py_pct, contributors, commits_recent, frameworks_found) in overall_results[:args.limit_output]:
         row = [
             repo.get("full_name", ""),
             str(repo.get("stargazers_count", 0)),
@@ -365,11 +399,10 @@ def main():
         ]
         print("\t".join(row))
 
-    if len(results) > args.limit_output:
-        print(f"\n(Showing top {args.limit_output} of {len(results)}.)")
+    if len(overall_results) > args.limit_output:
+        print(f"\n(Showing top {args.limit_output} of {len(overall_results)}.)")
 
-    # 5) Save ALL matches to CSV
-    out_path = args.out_csv
+    # 5) Final rewrite of CSV in sorted order (overwrites the incremental file)
     with open(out_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
         writer.writerow([
@@ -377,7 +410,7 @@ def main():
             f"commits_last_{args.days}d", "pushed_at", "html_url",
             "web_frameworks_detected", "description"
         ])
-        for (repo, py_pct, contributors, commits_recent, frameworks_found) in results:
+        for (repo, py_pct, contributors, commits_recent, frameworks_found) in overall_results:
             writer.writerow([
                 repo.get("full_name", ""),
                 int(repo.get("stargazers_count", 0)),
@@ -389,7 +422,7 @@ def main():
                 ",".join(frameworks_found),
                 (repo.get("description") or "").replace("\n", " ").strip()
             ])
-    print(f"\nSaved {len(results)} matched repositories to CSV: {out_path}")
+    print(f"\nSaved {len(overall_results)} matched repositories to CSV: {out_path}")
 
 if __name__ == "__main__":
     main()
