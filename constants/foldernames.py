@@ -3,8 +3,7 @@ class FolderNames:
     FIRST_MATCHING = "dana_first_try"
     SECOND_MATCHING = "second_testiteration"
     PR_MATCHING = "pr_first_iteration"
-
-
+    SMALL_REPOS  = "small_repos"
 
 
     KEYWORDS_MATCHING_DIR = "matched"

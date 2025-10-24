@@ -5,6 +5,8 @@ allenai/scispacy/v0.5.5,code_comment,267
 allenai/scispacy/v0.5.5,docs,6
 google/deepvariant/v1.6.1,code_comment,38034
 google/deepvariant/v1.6.1,docs,259
+mealie-recipes/mealie/v3.3.2,code_comment,4514
+mealie-recipes/mealie/v3.3.2,docs,140
 netbox-community/netbox/v4.4.1,code_comment,68600
 netbox-community/netbox/v4.4.1,docs,2985
 paperless-ngx/paperless-ngx/v2.18.4,code_comment,14274
@@ -17,7 +19,11 @@ saleor/saleor/3.21.19,docs,155
 scverse/scanpy/1.10.2,code_comment,2350
 scverse/scanpy/1.10.2,docs,102
 scverse/scanpy/1.10.2,wiki,54
+tubearchivist/tubearchivist/v0.5.7,code_comment,2560
+tubearchivist/tubearchivist/v0.5.7,docs,18
 wagtail/wagtail/v7.1.1,code_comment,75135
 wagtail/wagtail/v7.1.1,docs,4405
+wger-project/wger/2.3,code_comment,7950
+wger-project/wger/2.3,docs,194
 zulip/zulip/11.2,code_comment,83060
 zulip/zulip/11.2,docs,5490

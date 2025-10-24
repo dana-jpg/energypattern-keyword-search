@@ -25,12 +25,15 @@ def transform_quality_attributes(qas: QualityAttributesMap, sorter=qa_sorter, *,
 patterns_raw = {
     "datatransfer": [
         # Reduce request frequency / push over poll
-        "reduc network call", "reduc network calls", "reduc api call", "reduc api calls",
+        "us cache", "introduc cache", "enabl cache", "reuse cached data", "implement cache", "reduc network call", "reduc network calls", "reduc api call", "reduc api calls",
         "fewer requests", "minimiz requests", "cut request rate", "reduc refresh rate", "lower refresh rate",
         "increas refresh interval", "increas request interval", "refresh less often", "slow refresh", "slow update",
         "refresh on change", "periodic refresh", "every\ \*\ minutes",
         "replac poll", "avoid poll", "stop poll", "long poll", "push over poll", "push updates",
         "server push", "socket\.io", "server-sent events",
+
+        #Batch requests
+        "batch request", "batch api call", "batch network call", "bulk request", "bulk upload", "bulk update", "combine request", "reduc round trips", 
 
         # Rate limiting / retry
         "rate limit request", "rate limiting", "throttl request", "throttling",

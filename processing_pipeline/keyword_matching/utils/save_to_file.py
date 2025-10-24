@@ -10,7 +10,7 @@ from processing_pipeline.keyword_matching.model.MatchSource import MatchSource
 
 
 def save_matches_to_file(records: List[FullMatch], source: MatchSource, repo: Repo, *, with_matched_text: bool = False):
-    base_dir = AbsDirPath.PR_KEYWORDS_MATCHING
+    base_dir = AbsDirPath.SMALL_REPOS_KEYWORDS_MATCHING 
     filename = f'{repo.dotted_ref}.{source.value}.parquet'
     if with_matched_text:
         resulting_filename = base_dir / "full" / filename

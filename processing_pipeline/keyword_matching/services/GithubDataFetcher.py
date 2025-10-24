@@ -15,6 +15,10 @@ from tqdm import tqdm
 from constants.abs_paths import AbsDirPath
 from models.Repo import Repo
 
+import random
+from github.GithubException import GithubException
+
+
 InternalReactionKey = Literal[
     "thumbs_up", "thumbs_down", "laugh", "confused", 
     "heart", "hooray", "rocket", "eyes"
@@ -155,6 +159,57 @@ class GithubDataFetcher:
             # Be conservative if anything looks odd; don’t fail the run because of rate checks.
             pass
 
+    
+    def _sleep_backoff(self, attempt: int, base: float = 1.5, max_sleep: float = 30.0):
+        # Exponential backoff with jitter
+        delay = min(max_sleep, (base ** attempt) + random.random())
+        time.sleep(delay)
+    
+    def _with_retry(self, fn, *, max_retries: int = 6):
+        """
+        Retry wrapper for transient GitHub/server/network errors.
+        Returns fn() or raises after exhausting retries.
+        """
+        _TRANSIENT_STATUSES = {500, 502, 503, 504}
+
+        for attempt in range(max_retries + 1):
+            try:
+                return fn()
+            except GithubException as ge:
+                status = getattr(ge, "status", None)
+                # Respect rate-limit if present, otherwise retry on transient 5xx
+                if status == 403 and "rate limit" in str(ge).lower():
+                    self._respect_rate_limit(min_remaining=1)
+                    continue
+                if status in _TRANSIENT_STATUSES:
+                    if attempt == max_retries:
+                        raise
+                    self._sleep_backoff(attempt)
+                    continue
+                # Non-transient -> re-raise
+                raise
+            except (OSError, TimeoutError) as e:
+                # Network flake
+                if attempt == max_retries:
+                    raise
+                self._sleep_backoff(attempt)
+                continue
+
+
+    def _iter_paginated_resilient(self, paginated_list):
+        for item in paginated_list:
+            for attempt in range(6):
+                try:
+                    yield item
+                    break
+                except RateLimitExceededException:
+                    self._respect_rate_limit(min_remaining=1)
+                except GithubException as ge:
+                    if ge.status in (500, 502, 503, 504):
+                        self._sleep_backoff(attempt)
+                        continue
+                    raise
+
 
     def get_repo_info(self) -> RepoInfoDTO:
         repo = self.github.get_repo(self.repo.git_id)
@@ -197,41 +252,95 @@ class GithubDataFetcher:
             if len(batch) > 0:
                 yield batch
 
-    def get_prs(self, batch_size: int = 10) -> Iterator[List[PullRequestDTO]]:
-        assert batch_size > 0, "Batch size must be greater than 0"
-        repo = self.github.get_repo(self.repo.git_id)
+    from tqdm import tqdm
 
+    def get_prs(
+        self,
+        batch_size: int = 10,
+        known_pr_numbers: Optional[Set[int]] = None,   # pass the PR numbers you already have
+    ) -> Iterator[List[PullRequestDTO]]:
+        assert batch_size > 0, "Batch size must be greater than 0"
+        known_pr_numbers = known_pr_numbers or set()
+    
+        repo = self.github.get_repo(self.repo.git_id)
+    
         prs_cache_dir = AbsDirPath.CACHE / "prs"
         os.makedirs(prs_cache_dir, exist_ok=True)
+    
         with shelve.open(prs_cache_dir / self.repo.repo_name) as db:
-            # Get all pull requests
-            prs = repo.get_pulls(state='all', direction='asc')
-            total_count = prs.totalCount
-
-            batch = []
-            for pr in tqdm(prs, total=total_count, desc="Fetching Pull Requests"):
-                try:
-                    batch.append(self._map_pr_to_dto(pr))
-
-                    if len(batch) == batch_size:
-                        yield batch
-                        db["since"] = pr.created_at
-                        batch.clear()
-
-                    self._respect_rate_limit(min_remaining=100)
-
-                except RateLimitExceededException as rle:
-                    # Fallback safety: if we still hit the limit, sleep until reset and continue
-                    # PyGithub raises this with headers already parsed; the global attributes are set.
-                    self._respect_rate_limit(min_remaining=1)
-                    continue
-                except Exception as e:
-                    print(f"Error processing Pull Request #{getattr(pr, 'number', '?')}: {str(e)}")
-                    continue
-
-            if len(batch) > 0:
+            boundary_ts: Optional[datetime] = db.get("boundary_ts")  # last processed updated_at
+            boundary_num: Optional[int] = db.get("boundary_num")     # tie-breaker
+    
+            # NOTE: Issues API supports 'since' (by updated_at)
+            issues_pl = (
+                repo.get_issues(state="all", direction="asc", since=boundary_ts)
+                if boundary_ts else
+                repo.get_issues(state="all", direction="asc")
+            )
+    
+            # tqdm will show *processed PRs* (not raw items) so total is unknown
+            batch: List[PullRequestDTO] = []
+            max_ts, max_num = boundary_ts, boundary_num or 0
+            seen_numbers: Set[int] = db.get("seen_numbers", set())
+    
+            with tqdm(desc="Fetching Pull Requests", unit="pr") as pbar:
+                for it in self._iter_paginated_resilient(issues_pl):
+                    try:
+                        # keep only PRs (Issues API returns both)
+                        if not getattr(it, "pull_request", None):
+                            continue
+    
+                        num = it.number
+    
+                        # skip already-known (DB) or seen in previous runs
+                        if num in known_pr_numbers or num in seen_numbers:
+                            continue
+    
+                        # guard against inclusive boundary (same updated_at)
+                        if boundary_ts and it.updated_at == boundary_ts and num <= (boundary_num or 0):
+                            continue
+    
+                        # fetch PR object for PR-specific fields/comments/etc.
+                        pr = self._with_retry(lambda: repo.get_pull(num))
+    
+                        batch.append(self._map_pr_to_dto(pr))
+                        seen_numbers.add(num)
+                        pbar.update(1)
+                        pbar.set_postfix_str(f"last=#{num}")
+    
+                        # advance boundary
+                        if (max_ts is None) or (it.updated_at, num) > (max_ts, max_num):
+                            max_ts, max_num = it.updated_at, num
+    
+                        if len(batch) == batch_size:
+                            yield batch
+                            # persist progress
+                            db["boundary_ts"] = max_ts
+                            db["boundary_num"] = max_num
+                            db["seen_numbers"] = seen_numbers
+                            batch.clear()
+    
+                        self._respect_rate_limit(min_remaining=100)
+    
+                    except RateLimitExceededException:
+                        self._respect_rate_limit(min_remaining=1)
+                        continue
+                    except GithubException as ge:
+                        # Non-fatal: log and keep going
+                        print(f"[WARN] GitHub error on PR #{getattr(it, 'number', '?')}: {ge}")
+                        continue
+                    except Exception as e:
+                        print(f"[WARN] Error processing PR #{getattr(it, 'number', '?')}: {e}")
+                        continue
+    
+            # flush remainder
+            if batch:
                 yield batch
-
+                db["boundary_ts"] = max_ts
+                db["boundary_num"] = max_num
+                db["seen_numbers"] = seen_numbers
+    
+    
 
     def _map_issue_to_dto(self, issue: Issue) -> IssueDTO:
         # Get reactions for the issue
